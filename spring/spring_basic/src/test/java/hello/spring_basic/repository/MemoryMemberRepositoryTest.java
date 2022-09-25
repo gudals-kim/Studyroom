@@ -1,4 +1,4 @@
-package hello.spring_basic;
+package hello.spring_basic.repository;
 
 import hello.spring_basic.domain.Member;
 import hello.spring_basic.repository.MemoryMemberRepository;
