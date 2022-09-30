@@ -17,20 +17,20 @@ import java.util.Map;
 public class FrontControllerServletV1 extends HttpServlet {
 
 
-    private Map<String, ControllerV1> controllerV1Map = new HashMap<>();
+    private Map<String, ControllerV1> controllerMap = new HashMap<>();
 
     public FrontControllerServletV1() {
-        controllerV1Map.put("/front-controller/v1/members/new-form", new MemberFormControllerV1());
-        controllerV1Map.put("/front-controller/v1/members/save", new MemberSaveControllerV1());
-        controllerV1Map.put("/front-controller/v1/members", new MemberListControllerV1());
+        controllerMap.put("/front-controller/v1/members/new-form", new MemberFormControllerV1());
+        controllerMap.put("/front-controller/v1/members/save", new MemberSaveControllerV1());
+        controllerMap.put("/front-controller/v1/members", new MemberListControllerV1());
     }
 
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println("FrontControllerServletV1.service");
 
         String requestURI = request.getRequestURI();
-        ControllerV1 controller = controllerV1Map.get(requestURI);
+        ControllerV1 controller = controllerMap.get(requestURI);
+
         if(controller == null){
             response.setStatus(HttpServletResponse.SC_NOT_FOUND);
             return;
