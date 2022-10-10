@@ -154,7 +154,7 @@ public class RequestParamController {
     public String modelAttributeV2(HelloData helloData) {
         log.info("username={}, age={}", helloData.getUsername(),
                 helloData.getAge());
-        return "ok";ß
+        return "ok";
     }
 
 
