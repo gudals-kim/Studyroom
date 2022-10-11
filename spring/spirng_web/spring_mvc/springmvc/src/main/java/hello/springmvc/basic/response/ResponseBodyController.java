@@ -31,7 +31,7 @@ public class ResponseBodyController {
             return "ok";
         }
 
-        
+
 
 
         @GetMapping("/response-body-json-v1")
