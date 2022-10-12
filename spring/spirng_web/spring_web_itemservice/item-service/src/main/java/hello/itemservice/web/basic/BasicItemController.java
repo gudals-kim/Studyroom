@@ -39,13 +39,15 @@ public class BasicItemController {
         return "basic/item";
 
     }
+    @GetMapping("/add")
+    public String addForm(){
+        return "basic/addForm";
+    }
 
     @PostMapping("/add")
-    public String addItem(){
-
-
-
-        return "basic/addForm";
+    public String addItem(@ModelAttribute Item item){
+        itemRepository.save(item);
+        return "basic/item";
     }
 
 
