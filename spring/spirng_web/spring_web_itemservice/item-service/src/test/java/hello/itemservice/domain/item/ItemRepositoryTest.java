@@ -34,11 +34,12 @@ class ItemRepositoryTest {
     @Test
     void findById() {
         //given
-
+        Item item = new Item("itemA", 14000, 33);
+        itemRepository.save(item);
         //when
-
+        Item findItem = itemRepository.findById(item.getId());
         //then
-
+        assertThat(findItem).isEqualTo(item);
     }
 
     @Test
