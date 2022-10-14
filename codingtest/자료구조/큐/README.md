@@ -31,7 +31,7 @@
 <br>
 
 #### ✔ 3.1. Queue()로 큐 만들기 (가장 일반적인 큐, FIFO(First-In, First-Out))
-```
+```python
 import queue             #큐 라이브러리 임포트
 
 data_queue = queue.Queue()  # 변수를 Queue로 선언
@@ -42,13 +42,13 @@ data_queue.qsize()  # Queue의 크기 출력
 data_queue.get()  # Queue 데이터 뽑기
 data_queue.get()
 ```
-```
+```python
 출력 > 2            #data_queue.qsize()
 출력 > funcoding    #data_queue.get()
 출력 > 1            #data_queue.get()
 ```
 #### ✔ 3.2. LifoQueue()로 큐 만들기 (LIFO(Last-In, First-Out))
-```
+```python
 import queue
 data_queue = queue.LifoQueue()
 
@@ -60,12 +60,12 @@ data_queue.qsize()
 data_queue.get()
 
 ```
-```
+```python
 출력 > 2          #data_queue.qsize()
 출력 > 1          #data_queue.get()
 ```
 #### ✔ 3.3. PriorityQueue()로 큐 만들기
-```
+```python
 import queue
 
 data_queue = queue.PriorityQueue()
@@ -80,7 +80,7 @@ data_queue.get()
 
 data_queue.get()
 ```
-```
+```python
 출력 > 3                    #data_queue.qsize()
 출력 > (5, 1)               #data_queue.get()
 출력 > (10, 'korea')        #data_queue.get()
@@ -100,7 +100,7 @@ data_queue.get()
 <strong><font color="green" size="3em">연습1: 리스트 변수로 큐를 다루는 enqueue, dequeue 기능 구현해보기</font></strong>
 </div>
 
-```
+```python
 queue_list = list()
 
 def enqueue(data):
@@ -117,7 +117,7 @@ for index in range(10):
 len(queue_list)
 dequeue()
 ```
-```
+```python
 출력 > 10 # len(queue_list)
 출력 > 2  # dequeue()
 ```
