@@ -64,7 +64,7 @@ print(data[2][0])
 
 ### 파이썬 배열 기초 문제
 #### _다음 dataset 에서 전체 이름 안에 M이 몇번 나왔는지 빈도수를 출력하라._
-```
+```python
 dataset = ['Braund, Mr. Owen Harris',
 'Cumings, Mrs. John Bradley (Florence Briggs Thayer)',
 'Heikkinen, Miss. Laina',
@@ -97,7 +97,7 @@ dataset = ['Braund, Mr. Owen Harris',
 'Todoroff, Mr. Lalio']
 ```
 #### 입력
-```
+```python
 빈도수 = 0
 for data in dataset:
     for i in reange(len(data)):
@@ -106,6 +106,6 @@ for data in dataset:
 print(빈도수)
 ```
 #### 출력
-```
-38
+```python
+출력 > 38
 ```
