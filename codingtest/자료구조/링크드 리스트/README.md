@@ -21,7 +21,7 @@
     - 파이썬 객체지향 문법의 이해가 필요하다.
     - 참고 : https://www.fun-coding.org/PL&OOP1-3.html
 
-```
+```python
 #입력
 class Node:
     def __init__(self, data, next=None):
@@ -30,7 +30,7 @@ class Node:
 ```
 
 #### 2.2 노드와 노드 연결하기
-```
+```python
 #입력
 node1 = Node(1)
 node2 = Node(2)
@@ -39,7 +39,7 @@ head = node1
 ```
 
 #### 2.3 링크드 리스트로 데이터 추가하기
-```
+```python
 #입력
 class Node:
     def __init__(self, data, next=None):
@@ -63,7 +63,7 @@ while node.next:
     node = node.next
 print(node.data)
 ```
-```
+```python
 #출력
 출력 > 1
 출력 > 2
@@ -99,7 +99,7 @@ print(node.data)
 #### 4.1 링크드리스트 중간에 데이터 삽입하기
 * #1~9까지 연결된 링크드리스트에 1.5를 1 다음에 넣어보자.
 
-```
+```python
 #입력
 
 node = head
@@ -108,7 +108,7 @@ while node.next:
     node = node.next
 print(node.data)
 ```
-```
+```python
 #출력
 출력 > 1
 출력 > 2
@@ -120,7 +120,7 @@ print(node.data)
 출력 > 8
 출력 > 9
 ```
-```
+```python
 #입력
 
 node3 = Node(1.5) # 중간에 넣을 데이터
@@ -145,7 +145,7 @@ while node.next: #루프를 돌려서 출력해본다.
     node = node.next
 print(node.data)
 ```
-```
+```python
 #출력
 출력 > 1
 출력 > 1.5
@@ -163,7 +163,7 @@ print(node.data)
 
 ### 5. 파이썬 객체를 이용하여 링크드리스트 구현하기
 
-```
+```python
 #입력
 class Node: # node 객체
     def __inti__(self, data, next=None):
@@ -196,7 +196,7 @@ linkedlist1.add(2) # 4 노드 다음에 0 노드 추가
 linkedlist1.desc() #현재 링크드리스트 모두 출력
 
 ```
-```
+```python
 #출력
 출력 > 0
 출력 > 4
@@ -210,7 +210,7 @@ linkedlist1.desc() #현재 링크드리스트 모두 출력
 #### 6.1 특정 노드 삭제 기능 넣기
 
 * 기존 코드에 delete 메서드를 추가하자
-```
+```python
 #입력
 
 
@@ -262,7 +262,7 @@ class NodeMgmt: # node 추가, 삽입, 출력 객체
 
 ```
 * 테스트 코드
-```
+```python
 #입력 
 linkedlist1 = NodeMgmt(0) #헤드노드가 0인 링크드리스트 생성
 linkedlist1.desc() # 링크드 생성 후 확인 desc 코드
@@ -271,7 +271,7 @@ for data in range(1,10):
     linkedlist1.add(data) #링크드리스트에 1부터 9까지 추가
 linkedlist1.desc() # 데이터 추가후 링크드 리스트 확인 desc 코드
 ```
-```
+```python
 #출력
 
 출력 > 0 # 링크드 리스트 생성 후 확인 desc 코드
@@ -287,14 +287,14 @@ linkedlist1.desc() # 데이터 추가후 링크드 리스트 확인 desc 코드
 출력 > 9
 ```
 * delete 메서드 시험해보자.
-```
+```python
 #입력
 
 linkedlist.delete(4) #data가 4인 노드 삭제
 linkedlist.delete(2) #data가 2인 노드 삭제
 linkedlist.desc() #링크드 리스트 출력
 ```
-```
+```python
 #출력
 
 출력 > 0
@@ -310,7 +310,7 @@ linkedlist.desc() #링크드 리스트 출력
 
 #### 6.2 링크드리스트에 검색 기능 넣기
 * 기존 코드에 serch_node() 메서드를 추가하자
-```
+```python
 #입력
 
 
@@ -373,7 +373,7 @@ class NodeMgmt: # node 추가, 삽입, 출력 객체
 
 
 * 테스트 코드
-```
+```python
 #입력
 
 node_mgmt = NodeMgmt(0) # 헤드노드가 0인 링크드리스트 생성
@@ -383,7 +383,7 @@ for data in range(1, 10):
 node = node_mgmt.search_node(4)
 print(node.data) 
 ```
-```
+```python
 #출력
 
 출력 > 4
@@ -404,7 +404,7 @@ print(node.data)
 <br>
 
 #### 7.1 더블링크드 리스트 파이썬 구현
-```
+```python
 #입력
 
 class Node:
@@ -439,7 +439,7 @@ class NodeMgmt:
 
 ```
 * 테스트 코드
-```
+```python
 #입력
 
 double_linked_list = NodeMgmt(0)
@@ -447,7 +447,7 @@ for data in range(1, 10):
     double_linked_list.insert(data)
 double_linked_list.desc()
 ```
-```
+```python
 #출력
 
 출력 > 0
