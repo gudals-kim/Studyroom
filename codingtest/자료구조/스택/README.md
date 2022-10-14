@@ -20,7 +20,7 @@
 #### 2.1 재귀 함수로 이해해보기
 
 > 
-```
+```python
 #입력
 def recursive(data):
     if data < 0:
@@ -30,7 +30,7 @@ def recursive(data):
         recursive(data-1) # 재 호출
         print("return",data)
 ```
-```
+```python
 # 출력
 > 출력 4 #recursive(4)의 print(data) 후 recursive(3) 호출
 > 출력 3 #recursive(3)의 print(data) 후 recursive(2) 호출
@@ -80,7 +80,7 @@ def recursive(data):
 
 * append,pop 메서드 사용
 
-```
+```python
 #입력
 data_stack = list()
 
@@ -91,7 +91,7 @@ data_stack.append(3)
 data_stack
 data_stack.pop()
 ```
-```
+```python
 #출력
 출력 > [1,2,3] #data_stack
 출력 > 3 #data_stack.pop()
@@ -101,7 +101,7 @@ data_stack.pop()
 * <font color="#BF360C">리스트 변수로 스택을 다루는 pop, push 기능 구현해보기</font>
     - 요구사항 : pop, push 함수 미사용
 
-```
+```python
 #입력
 
 stack_list = list()
@@ -119,7 +119,7 @@ for index in range(10):
 pop()
 
 ```
-```
+```python
 #출력
 
 출력 > 9 #pop()
