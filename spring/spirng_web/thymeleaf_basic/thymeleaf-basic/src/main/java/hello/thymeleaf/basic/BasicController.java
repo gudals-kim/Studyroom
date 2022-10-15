@@ -113,6 +113,13 @@ public class BasicController {
     }
 
 
+    @GetMapping("/comments")
+    public String comments(Model model) {
+        model.addAttribute("data", "Spring!");
+        return "basic/comments";
+    }
+
+
     @Component("helloBean")
     static class helloBean{
         public String hello(String data){
