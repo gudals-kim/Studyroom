@@ -10,9 +10,9 @@ class Stack:
         self.list.append(data)
     
     def pop(self):
-        print(self.list[0])
-        result = self.list[0]
-        del self.list[0]
+        print(self.list[-1])
+        result = self.list[-1]
+        del self.list[-1]
 
 
 #test code
