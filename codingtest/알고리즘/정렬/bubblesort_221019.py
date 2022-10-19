@@ -16,7 +16,7 @@
 #데이터가 n개일때 cycle은 n-1번 반복하고 각 cycle의 index는 0부터 n - 현재 싸이클 cycle까지 접근한다.
 def bubblesort(data):
     #data가 len(data)개 일때 cycle은 len(data)-1 반복한다.
-    for cycle in range(1,len(data)-1):
+    for cycle in range(1,len(data)):#data가 4개면 [1,2,3] 으로 3번반복이다.
         swap = False
         #index는 0부터 len(data) - 현재cycle 을 뺀곳까지 접근
         for index in range(len(data)-cycle):
