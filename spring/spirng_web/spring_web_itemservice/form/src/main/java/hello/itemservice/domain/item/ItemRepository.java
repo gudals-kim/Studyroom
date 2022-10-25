@@ -1,5 +1,6 @@
 package hello.itemservice.domain.item;
 
+import com.sun.tools.attach.AgentInitializationException;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -32,6 +33,11 @@ public class ItemRepository {
         findItem.setItemName(updateParam.getItemName());
         findItem.setPrice(updateParam.getPrice());
         findItem.setQuantity(updateParam.getQuantity());
+        findItem.setOpen(updateParam.getOpen());
+        findItem.setRegions(updateParam.getRegions());
+        findItem.setItemType(updateParam.getItemType());
+        findItem.setDeliveryCode(updateParam.getDeliveryCode());
+
     }
 
     public void clearStore() {
