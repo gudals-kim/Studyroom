@@ -219,8 +219,8 @@ result = left + list(pivot) + right
 
 ```python
 def quicksort(data):
-    #입력 받은 리스트 갯수가 한개이면 그대로 반환한다.
-    if len(data) == 1 :
+    #입력 받은 리스트 갯수가 한개보다 작으면 그대로 반환한다.
+    if len(data) <= 1 :
         return data
     #left,right 리스트 생성
     left = list()
@@ -260,3 +260,129 @@ def qsort(data):
     - 맨 처음 pivot이 가장 크거나, 가장 작으면
     - 모든 데이터를 비교하는 상황이 나옴
 <img src="https://www.fun-coding.org/00_Images/quicksortworks.jpg" />
+
+<br>
+
+## 5. 병합 정렬 (merge sort)
+
+### 5.1 병합정렬 이란?
+
+* 재귀 용법을 활용한 정렬 알고리즘
+    1. 리스트를 절반으로 잘라 비슷한 크기의 두 부분의 리스트로 나눈다.
+    2. 각 부분 리스트를 재귀적으로 합병 정렬를 이용행 정렬한다.
+    3. 두 부분 리스트를 다시 하나의 정렬된 리스트로 합병한다.
+* 직접 눈으로 보면 더 이해가 쉽다: https://visualgo.net/en/sorting
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/c/cc/Merge-sort-example-300px.gif" width=500/>
+
+출처: [위키피디아](https://ko.wikipedia.org/wiki/%ED%95%A9%EB%B3%91_%EC%A0%95%EB%A0%AC)
+
+### 5.2 알고리즘 이해
+
+* 데이터가 네 개 일때 생각해보기
+    - 예 : data_list = [1,9,3,2]
+        * 먼저 [1,9],[3,2]로 나누고
+        * 다시 앞 부분은 [1],[9]로 나누고
+        * 다시 정렬 해서 합친다. [1,9]
+        * 다음 [3,2]는 [3], [2]로 나누고
+        * 다시 정렬 해서 합친다 [2,3]
+        * 이제 [1,9],[2,3] 을 합친다
+            * 1 < 2 이니 [1]
+            * 9 > 2 이니 [1,2]
+            * 9 > 3 이니 [1,2,3]
+            * 9 만 남았으니 [1,2,3,9]
+
+
+* 어떤 데이터리스트가 있 을때 리스트를 앞 뒤로 짜르는 코드를 작성하기
+
+```python
+data = [1,5,7,2]
+def split_func(data):
+    # data의 길이의 중간 인덱스를 저장
+    medium = int(len(data)/2) # 7 
+    left = data[:medium]  #[1,5]
+    right = data[medium:] #[7,2]
+```
+
+
+### 5.3 알고리즘 구현
+
+* mergesplit 함수 만들기
+    - 만약 리스트 갯수가 한개이면 해당 값을 리턴한다.
+    - 그렇지 않으면, 리스트를 앞뒤, 두 개로 나눈다.
+    - left = mergesplit(앞)
+    - right = mergesplit(뒤)
+    - merge(left,right)
+
+* merge 함수 만들기
+    - 리스트 변수 하나 만들기 (sorted)
+    - left_index, right_index = 0
+    - while left_index < len(left) or right_index < len(right)
+        * 만약 left_index 나 right_index가 이미 left 또는 right 리스트를 다 순회 했다면, 그 반대쪽 데이터를 그대로 넣고, 해당 인덱스 1 증가
+
+            ```python
+            if left[left_index] < right[right_index]:
+                sorted.append(left[left_index])
+                left_index += 1
+            else:
+                sorted.append(right[right_index])
+                right_index += 1
+            ```
+
+* mergesplit 함수 구현
+
+```python
+def mergesplit(data):
+    if len(data) <= 1:
+        return data
+    pivot = int(len(data)/2)
+    left = mergesplit(data[:pivot])
+    right = mergesplit(data[pivot:])
+    return merge(left,right)
+```
+
+* merge 함수 구현
+
+```python
+def merge(left,right):
+    sorted = list()
+    left_point, right_point = 0, 0
+
+    # case1 - left/right 둘다 있을때
+    while len(left) > left_point and len(right) > right_point:
+        # left[0] 보다 rignt[0]이 클때
+        if left[left_point] > right[right_point]:
+            sorted.append(right[reight_point])
+            right_point += 1
+        # left[0] 보다 rignt[0]이 클때
+        else:
+            sorted.append(left[left_point])
+            left_point += 1
+    
+    # case2 - right 데이터가 없을때
+    while len(left) > left_point:
+        sorted.append(left[left_point])
+        left_point += 1
+    
+    # case3 - left 데이터가 없을때
+    while len(right) > right_point:
+        sorted.append(right[right_point])
+        right_point += 1
+    
+    return sorted
+
+```
+
+### 5.4 병합 정렬 시간 복잡도
+
+* 알고리즘 분석은 쉽지 않음, <font color='#BF360C'>이 부분은 참고로만 알아두자.</font>
+  - 다음을 보고 이해해보자
+    - 몇 단계 깊이까지 만들어지는지를 depth 라고 하고 i로 놓자. 맨 위 단계는 0으로 놓자.
+      - 다음 그림에서 n/$2^2$ 는 2단계 깊이라고 해보자.
+      - 각 단계에 있는 하나의 노드 안의 리스트 길이는 n/$2^2$ 가 된다.
+      - 각 단계에는 $2^i$ 개의 노드가 있다.
+    - 따라서, 각 단계는 항상 <font size=4em>$2^i * \frac { n }{ 2^i } = O(n)$</font>
+    - 단계는 항상 $log_2 n$ 개 만큼 만들어짐, 시간 복잡도는 결국 O(log n), 2는 역시 상수이므로 삭제
+    - 따라서, 단계별 시간 복잡도 O(n) * O(log n) = O(n log n)
+
+<img src="https://www.fun-coding.org/00_Images/mergesortcomplexity.png" />
