@@ -72,7 +72,7 @@ def binary_search(data, search):
             return binary_search(data[:pivot],search)
 ```
 
-### 1.5 이진탐색(***O(<font size=4em>$log n$<font size=4em>)***)의 시간복잡도
+### 1.5 이진탐색(***O(log n)***)의 시간복잡도
 
 * n개의 리스트를 매번 2로 나누어 1이 될 때까지 비교연산을 k회 진행
     - <font size=4em>n X $\frac { 1 }{ 2 }$ X $\frac { 1 }{ 2 }$ X $\frac { 1 }{ 2 }$ ... = 1</font>
@@ -80,7 +80,7 @@ def binary_search(data, search):
     - <font size=4em>n = $2^k$ = $log_2 n$ = $log_2 2^k$</font>
     - <font size=4em>$log_2 n$ = k</font>
     - 빅 오 표기법으로는 k + 1 이 결국 최종 시간 복잡도임 (1이 되었을 때도, 비교연산을 한번 수행)
-    - <font size=4em>결국 O($log_2 n$ + 1) 이고, 2와 1, 상수는 삭제 되므로, ***O($log n$)***<font size=4em>
+    - 결국 O($log_2 n$ + 1) 이고, 2와 1, 상수는 삭제 되므로, ***O(log n)*** 
 
 <br>
 
