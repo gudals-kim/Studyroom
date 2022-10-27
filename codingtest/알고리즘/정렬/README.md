@@ -163,3 +163,100 @@ selection_sort(data_list)
 * 반복문이 두 개 O($n^2$)
   - 실제로 상세하게 계산하면, <font size=5em>$\frac { n * (n - 1)}{ 2 }$</font>
   
+<br>
+
+## 4. 퀵 정렬(quick sort)
+
+### 4.1 퀵 정렬 이란?
+* 정렬 알고리즘의 꽃
+* 기준점(pivot)을 정해서, pivot보다 작은 데이터는 왼쪽(left), 큰 데이터는 오른쪽(right)으로 모으는 함수를 작성한다.
+* 각 왼쪽, 오른쪽은 재귀 용법을 사용해서 다시 동일 함수를 호출하여 위 작업을 반복한다.
+* 함수는 왼쪽(left) + 기준점(pivot) + 오른쪽(right)를 리턴한다.
+
+### 4.2 파이썬으로 구현하기
+
+* 리스트 슬라이싱 사용하기
+
+```python
+data_list = [1,2,3,4,5]
+
+left = data_list[:2] #[1,2]
+pivot = data_list[2] #[3]
+right = data_list[3:] #[4,5]
+```
+
+* data_list가 임의 길이일때, 리스트를 맨 앞 데이터를 pivot으로 지정하고 pivot 보다 작은데이터는 left에 큰 함수를 right에 저장하기
+
+```python
+import random
+data_list = random.sample(range(100), 10)
+left = list()
+right = list()
+pivot = data_list[0]
+
+#data_list 의 인덱스 접근
+for index in ragne(1,len(datalist)+1):
+    # 각 datalist[index]가 pivot보다 작을때
+    if datalist[index] < pivot:
+        #left 리스트에 추가
+        left.append(datalist[index])
+    # 각 datalist[index]가 pivot보다 크거나 같을때
+    else:
+        right.append(data_list[index])
+result = left + list(pivot) + right
+
+```
+
+* 알고리즘 구현하기
+
+    - quicksort 함수 만들기
+        * 만약 리스트 갯수가 한개이면 해당 리스트를 리턴
+        * 그렇지 않으면, 리스트 맨 앞의 데이터를 기준으로 놓는다.
+        * left,right 리스트를 만들고
+        * 맨 앞의 데이터를 뺀 나머지 데이터를 기준점과 비교한다.
+        * 기준점보다 작으면 left, 크거나 같으면 right에 넣는다.
+        * return quicksort(left) + [pivot] + quicksort(right)로 재귀호출한다.
+
+```python
+def quicksort(data):
+    #입력 받은 리스트 갯수가 한개이면 그대로 반환한다.
+    if len(data) == 1 :
+        return data
+    #left,right 리스트 생성
+    left = list()
+    right = list()
+    # 기준점 설정
+    pivot = data[0]
+
+    #data 각 index 접근
+    for index in range(1:len(data)+1):
+        if data[index] < pivot:
+            left.append(data[index])
+        else:
+            right.append(data[index])
+    
+    return quicksort(left) + [pivot] + quicksort(right)
+
+```
+
+* list comprehension 사용하여 코드 길이 줄이기
+
+```python
+def qsort(data):
+    if len(data) <= 1:
+        return data
+    
+    pivot = data[0]
+
+    left = [ item for item in data[1:] if pivot > item ]
+    right = [ item for item in data[1:] if pivot <= item ]
+    
+    return qsort(left) + [pivot] + qsort(right)
+```
+
+### 4.3 퀵정렬의 시간복잡도
+* 병합정렬과 유사, ```시간복잡도는 O(n log n)```
+  - 단, ***최악의 경우*** ```O($n^2$)```
+    - 맨 처음 pivot이 가장 크거나, 가장 작으면
+    - 모든 데이터를 비교하는 상황이 나옴
+<img src="https://www.fun-coding.org/00_Images/quicksortworks.jpg" />
