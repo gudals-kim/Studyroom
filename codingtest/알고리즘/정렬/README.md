@@ -195,7 +195,7 @@ right = list()
 pivot = data_list[0]
 
 #data_list 의 인덱스 접근
-for index in ragne(1,len(datalist)+1):
+for index in ragne(1,len(datalist)):
     # 각 datalist[index]가 pivot보다 작을때
     if datalist[index] < pivot:
         #left 리스트에 추가
@@ -229,7 +229,7 @@ def quicksort(data):
     pivot = data[0]
 
     #data 각 index 접근
-    for index in range(1:len(data)+1):
+    for index in range(1,len(data)):
         if data[index] < pivot:
             left.append(data[index])
         else:
@@ -256,7 +256,7 @@ def qsort(data):
 
 ### 4.3 퀵정렬의 시간복잡도
 * 병합정렬과 유사, ```시간복잡도는 O(n log n)```
-  - 단, ***최악의 경우*** ```O($n^2$)```
+  - 단, ***최악의 경우 O($n^2$)***
     - 맨 처음 pivot이 가장 크거나, 가장 작으면
     - 모든 데이터를 비교하는 상황이 나옴
 <img src="https://www.fun-coding.org/00_Images/quicksortworks.jpg" />
