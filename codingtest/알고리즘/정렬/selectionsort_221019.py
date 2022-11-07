@@ -25,7 +25,7 @@ def selection_sort(data):
     return data
 
 
-    #test code
+#test code
 import random
 
 data_list = random.sample(range(100), 10)
