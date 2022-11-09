@@ -14,6 +14,30 @@ import static hello.jdbc.connection.DBConnectionUtil.*;
  */
 @Slf4j
 public class MemberRepositoryV0 {
+    public void update(String memberId, int money) throws SQLException {
+        String sql = "update member set money=? where member_id=?";
+
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        try {
+            con = getConnection();//DBConnectionUtil 를 통해서 데이터베이스 커넥션을 획득한다.
+            pstmt = con.prepareStatement(sql);//데이터베이스에 전달할 SQL과 파라미터로 전달할 데이터들을 준비
+            pstmt.setInt(1, money);
+            pstmt.setString(2, memberId);
+
+            //executeUpdate() 는 쿼리를 실행하고 영향받은 row수를 반환한다.
+            // 여기서는 하나의 데이터만 변경하기 때문에 결과로 1이 반환된다.
+            // 만약 회원이 100명이고, 모든 회원의 데이터를 한번에 수정하는 update sql 을 실행하면 결과는 100이 된다.
+            int resultSize = pstmt.executeUpdate();
+            log.info("resultSize={}",resultSize);
+        } catch (SQLException e) {
+            log.error("db error", e);
+            throw e;
+        } finally {
+            close(con,pstmt,null);
+        }
+    }
+
 
     public Member save(Member member) throws SQLException {
         String sql = "insert into member(member_id, money) values (?,?)";//데이터베이스에 전달할 SQL을 정의
