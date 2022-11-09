@@ -25,3 +25,15 @@ def make_sort(withdrawal_time):
         else:
             right.append(withdrawal_time[index])
     return make_sort(left)+[pivot]+make_sort(right)
+#메인 로직 구현(값을 더하는 기능)
+def make_atm():
+    withdrawal_time = make_sort(make_input()[1])
+    pre_time=0
+    time_sum=0
+    for time in withdrawal_time:
+        pre_time += time
+        time_sum += pre_time 
+    return time_sum
+#test code
+print(make_atm())
+
