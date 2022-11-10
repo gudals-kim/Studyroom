@@ -64,7 +64,7 @@ public class ValidationItemControllerV1 {
         if (item.getPrice() != null && item.getQuantity() != null){
             int resultPrice = item.getPrice() * item.getQuantity();
             if (resultPrice < 10000){
-                errors.put("globalError", "등록 상품의 총액이 10,000원 이상이어야 합니다. 현재 상품 등록 총액" + resultPrice);
+                errors.put("globalError", "등록 상품의 총액이 10,000원 이상이어야 합니다. 현재 상품 등록 총액 = " + resultPrice);
             }
         }
 
