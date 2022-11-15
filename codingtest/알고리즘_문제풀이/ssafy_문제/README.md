@@ -148,26 +148,144 @@ def 출력(testcase):
 출력(입력())
 ```
 
-
 </details>
 
+
 <details>
-<summary>backjoon_문제번호 노트정리</summary>
+<summary>2070_큰 놈, 작은 놈, 같은 놈 노트정리</summary>
 
-* [문제링크](문제링크)
+* [문제링크](https://swexpertacademy.com/main/code/problem/problemDetail.do?problemLevel=1&contestProbId=AV5QQ6qqA40DFAUq&categoryId=AV5QQ6qqA40DFAUq&categoryType=CODE&problemTitle=&orderBy=FIRST_REG_DATETIME&selectCodeLang=ALL&select-1=1&pageSize=10&pageIndex=1)
 
-## SW Expert Academy 2071번 평균값 구하기
+## SW Expert Academy 2070번 큰 놈, 작은 놈, 같은 놈
 
 |시간제한|메모리제한|정답비율|입력조건|출력조건|
 |:---:|:---:|:---:|:---:|:---:|
-|1초|256MB|35%|입력조건|출력조건
+|30초|256MB|82%|문제에표기|문제에표기
 
 <br>
 
 ### 문제
 
 ```
-문제 내용
+[문제]
+
+2개의 수를 입력 받아 크기를 비교하여 등호 또는 부등호를 출력하는 프로그램을 작성하라.
+
+
+[제약 사항]
+
+각 수는 0 이상 10000 이하의 정수이다.
+
+
+[입력]
+
+가장 첫 줄에는 테스트 케이스의 개수 T가 주어지고, 그 아래로 각 테스트 케이스가 주어진다.
+
+각 테스트 케이스의 첫 번째 줄에는 2개의 수가 주어진다.
+
+
+[출력]
+
+출력의 각 줄은 '#t'로 시작하고, 공백을 한 칸 둔 다음 정답을 출력한다.
+
+(t는 테스트 케이스의 번호를 의미하며 1부터 시작한다.)
+```
+
+
+<br>
+
+|예제입력|예제출력|
+|:---:|:---:|
+|3|예제출력|
+|3 8|#1 <|
+|7 7|#2 =|
+|369 123|#3 >|
+
+
+<br>
+
+### 문제풀이 전략
+
+1. 메인 로직 처리 
+    - 케이스만 나눠준다.
+
+2. 입력 처리
+    -  input 받은뒤 그 수만큼 반복하여 testcase를 받는다.
+
+3. 출력 처리
+    - 문제 조건에 맞게 출력한다.
+
+### 답안 전체코드
+
+```py
+def 메인함수(testcase):
+    if testcase[0] > testcase[1]:
+        return ">"
+    elif testcase[0] < testcase[1]:
+        return "<"
+    else:
+        return "="
+
+
+def 입력():
+    n = int(input())
+    i = 0
+    testcaseList = list()
+    while i<n:
+        testcaseList.append(list(map(int,input().split())))
+        i+=1
+    return testcaseList
+
+def 출력(testcaseList):
+    n = 1
+    for testcase in testcaseList:
+        print("#%d %c"%(n,메인함수(testcase)))
+        n+=1
+출력(입력())
+```
+
+
+</details>
+
+
+<details>
+<summary>2070_큰 놈, 작은 놈, 같은 놈 노트정리</summary>
+
+* [문제링크](https://swexpertacademy.com/main/code/problem/problemDetail.do?problemLevel=1&contestProbId=AV5QQ6qqA40DFAUq&categoryId=AV5QQ6qqA40DFAUq&categoryType=CODE&problemTitle=&orderBy=FIRST_REG_DATETIME&selectCodeLang=ALL&select-1=1&pageSize=10&pageIndex=1)
+
+## SW Expert Academy 2070번 큰 놈, 작은 놈, 같은 놈
+
+|시간제한|메모리제한|정답비율|입력조건|출력조건|
+|:---:|:---:|:---:|:---:|:---:|
+|30초|256MB|82%|문제에표기|문제에표기
+
+<br>
+
+### 문제
+
+```
+[문제]
+
+2개의 수를 입력 받아 크기를 비교하여 등호 또는 부등호를 출력하는 프로그램을 작성하라.
+
+
+[제약 사항]
+
+각 수는 0 이상 10000 이하의 정수이다.
+
+
+[입력]
+
+가장 첫 줄에는 테스트 케이스의 개수 T가 주어지고, 그 아래로 각 테스트 케이스가 주어진다.
+
+각 테스트 케이스의 첫 번째 줄에는 2개의 수가 주어진다.
+
+
+[출력]
+
+출력의 각 줄은 '#t'로 시작하고, 공백을 한 칸 둔 다음 정답을 출력한다.
+
+(t는 테스트 케이스의 번호를 의미하며 1부터 시작한다.)
 ```
 
 
