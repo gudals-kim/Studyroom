@@ -346,15 +346,15 @@ def 출력(testcaseList):
 
 
 <details>
-<summary>2070_큰 놈, 작은 놈, 같은 놈 노트정리</summary>
+<summary>2063_중간값 찾기</summary>
 
-* [문제링크](https://swexpertacademy.com/main/code/problem/problemDetail.do?problemLevel=1&contestProbId=AV5QQ6qqA40DFAUq&categoryId=AV5QQ6qqA40DFAUq&categoryType=CODE&problemTitle=&orderBy=FIRST_REG_DATETIME&selectCodeLang=ALL&select-1=1&pageSize=10&pageIndex=1)
+* [문제링크](https://swexpertacademy.com/main/code/problem/problemDetail.do?problemLevel=1&contestProbId=AV5QPsXKA2UDFAUq&categoryId=AV5QPsXKA2UDFAUq&categoryType=CODE&problemTitle=&orderBy=FIRST_REG_DATETIME&selectCodeLang=PYTHON&select-1=1&pageSize=10&pageIndex=1)
 
 ## SW Expert Academy 2070번 큰 놈, 작은 놈, 같은 놈
 
 |시간제한|메모리제한|정답비율|입력조건|출력조건|
 |:---:|:---:|:---:|:---:|:---:|
-|30초|256MB|82%|문제에표기|문제에표기
+|30초|256MB|78%|문제에표기|문제에표기
 
 <br>
 
@@ -363,26 +363,37 @@ def 출력(testcaseList):
 ```
 [문제]
 
-2개의 수를 입력 받아 크기를 비교하여 등호 또는 부등호를 출력하는 프로그램을 작성하라.
+중간값은 통계 집단의 수치를 크기 순으로 배열 했을 때 전체의 중앙에 위치하는 수치를 뜻한다.
+
+입력으로 N 개의 점수가 주어졌을 때, 중간값을 출력하라.
+
+
+[예제]
+
+N이 9 이고, 9개의 점수가 아래와 같이 주어질 경우,
+
+85 72 38 80 69 65 68 96 22
+
+69이 중간값이 된다.
 
 
 [제약 사항]
 
-각 수는 0 이상 10000 이하의 정수이다.
+1. N은 항상 홀수로 주어진다.
+
+2. N은 9이상 199 이하의 정수이다. (9 ≤ N ≤ 199)
 
 
 [입력]
 
-가장 첫 줄에는 테스트 케이스의 개수 T가 주어지고, 그 아래로 각 테스트 케이스가 주어진다.
+입력은 첫 줄에 N 이 주어진다.
 
-각 테스트 케이스의 첫 번째 줄에는 2개의 수가 주어진다.
+둘째 줄에 N 개의 점수가 주어진다.
 
 
 [출력]
 
-출력의 각 줄은 '#t'로 시작하고, 공백을 한 칸 둔 다음 정답을 출력한다.
-
-(t는 테스트 케이스의 번호를 의미하며 1부터 시작한다.)
+N 개의 점수들 중, 중간값에 해당하는 점수를 정답으로 출력한다.
 ```
 
 
@@ -390,18 +401,43 @@ def 출력(testcaseList):
 
 |예제입력|예제출력|
 |:---:|:---:|
-|예제입력1|예제출력2|
-|예제입력2|예제출력2|
+|9|예제출력|
+|85 72 38 80 69 65 68 96 22|69|
+
 
 <br>
 
 ### 문제풀이 전략
 
+1. 메인 로직 처리 
+    - 정렬 후 2로 나누어지는 몫의 인덱스를 반환한다.
 
+2. 입력 처리
+    - input 받은뒤 그 수만큼 반복하여 testcase를 받는다.
+
+3. 출력 처리
+    - 문제 조건에 맞게 출력한다.
 
 ### 답안 전체코드
 
+```py
+def 메인함수(testcase,n):
+    testcase.sort()
+    return testcase[(n//2)]
 
+def 입력():
+    n = int(input())
+    testcase = list(map(int,input().split()))
+    return testcase, n
+
+def 출력(testcase,n):
+    print(메인함수(testcase,n))
+
+
+testcase,n = 입력()
+출력(testcase,n)
+
+```
 
 </details>
 
