@@ -2,7 +2,23 @@
 
 ## 문제풀이 
 
-> 문제를 클릭하면 자세한 설명이 나온다. 
+> 메모리 검사 코드 
+
+```py
+import psutil
+def memory_usage(message: str = 'debug'):
+    # current process RAM usage
+    p = psutil.Process()
+    rss = p.memory_info().rss / 2 ** 20 # Bytes to MB
+    print(f"[{message}] memory usage: {rss: 10.5f} MB")
+
+memory_usage("#1")
+```
+
+> 문제를 누르면 설명이 나온다.
+
+
+<br>
 
 ### 1단계 문제
 
@@ -670,7 +686,131 @@ def 출력(testcaseList):
 
 </details>
 
+
+<br>
+
+
 ### 2단계 문제
 
 ---
 
+
+<details>
+<summary>1859번 백만 장자 프로젝트 노트정리</summary>
+
+* [문제링크](https://swexpertacademy.com/main/code/problem/problemDetail.do?problemLevel=2&contestProbId=AV5LrsUaDxcDFAXc&categoryId=AV5LrsUaDxcDFAXc&categoryType=CODE&problemTitle=&orderBy=FIRST_REG_DATETIME&selectCodeLang=ALL&select-1=2&pageSize=10&pageIndex=1)
+
+## SW Expert Academy 1859번 백만 장자 프로젝트
+
+|시간제한|메모리제한|정답비율|입력조건|출력조건|
+|:---:|:---:|:---:|:---:|:---:|
+|30초|256MB|30%|문제에표기|문제에표기
+
+<br>
+
+### 문제
+
+```
+[문제]
+
+25년 간의 수행 끝에 원재는 미래를 보는 능력을 갖게 되었다. 이 능력으로 원재는 사재기를 하려고 한다.
+
+다만 당국의 감시가 심해 한 번에 많은 양을 사재기 할 수 없다.
+
+다음과 같은 조건 하에서 사재기를 하여 최대한의 이득을 얻도록 도와주자.
+
+    1. 원재는 연속된 N일 동안의 물건의 매매가를 예측하여 알고 있다.
+    2. 당국의 감시망에 걸리지 않기 위해 하루에 최대 1만큼 구입할 수 있다.
+    3. 판매는 얼마든지 할 수 있다.
+
+예를 들어 3일 동안의 매매가가 1, 2, 3 이라면 처음 두 날에 원료를 구매하여 마지막 날에 팔면 3의 이익을 얻을 수 있다.
+
+
+[입력]
+
+첫 번째 줄에 테스트 케이스의 수 T가 주어진다.
+
+각 테스트 케이스 별로 첫 줄에는 자연수 N(2 ≤ N ≤ 1,000,000)이 주어지고,
+
+둘째 줄에는 각 날의 매매가를 나타내는 N개의 자연수들이 공백으로 구분되어 순서대로 주어진다.
+
+각 날의 매매가는 10,000이하이다.
+
+
+[출력]
+
+각 테스트 케이스마다 ‘#x’(x는 테스트케이스 번호를 의미하며 1부터 시작한다)를 출력하고, 최대 이익을 출력한다.
+
+
+[예제 풀이]
+
+1번째 케이스는 아무 것도 사지 않는 것이 최대 이익이다.
+
+2번째 케이스는 1,2일에 각각 한 개씩 사서 세 번째 날에 두 개를 팔면 10의 이익을 얻을 수 있다.
+```
+
+
+<br>
+
+|예제입력|예제출력|
+|:---:|:---:|
+|3|testcase개수|
+|3|test1|
+|10 7 6|#1 0|
+|3|test2|
+|3 5 9|#2 10|
+|5|test3|
+|1 1 3 1 2|#3 5|
+
+
+<br>
+
+### 문제풀이 전략
+
+1. 메인 로직 처리 
+    - 역정렬하여 가장 높은수를 만나면 계산한다. 이후 가장높은 수는 삭제한다
+
+2. 입력 처리
+    - input 받은뒤 그 수만큼 반복하여 testcase를 받는다.
+
+3. 출력 처리
+    - 문제 조건에 맞게 출력한다.
+
+### 답안 전체코드
+
+```py
+def 메인함수(testcase):
+    j=0
+    sum = 0
+    result = 0
+    maxnums = sorted(testcase,reverse=1)
+    for i in testcase:
+        sum += i
+        j+=1
+        max = maxnums[0]
+        if max == i:
+            result +=((i*j)-sum)
+            sum = 0
+            j = 0
+            del maxnums[0]
+    return result
+
+def 입력():
+    n = int(input())
+    testcaseList = list()
+    for i in range(n):
+        m = int(input())
+        testcaseList.append(list(map(int,input().split())))
+    return testcaseList
+
+def 출력(testcaseList):
+    num = 1
+    for testcase in testcaseList:
+        print("#%d %d"%(num,메인함수(testcase)))
+        num+=1
+
+출력(입력())
+
+```
+
+</details>
