@@ -511,3 +511,155 @@ print(result)
 ```
 
 </details>
+
+<details>
+<summary>2056_연월일 달력</summary>
+
+* [문제링크](https://swexpertacademy.com/main/code/problem/problemDetail.do?problemLevel=1&contestProbId=AV5QLkdKAz4DFAUq&categoryId=AV5QLkdKAz4DFAUq&categoryType=CODE&problemTitle=&orderBy=FIRST_REG_DATETIME&selectCodeLang=PYTHON&select-1=1&pageSize=10&pageIndex=1)
+
+## SW Expert Academy 2058번 자릿수 더하기
+
+|시간제한|메모리제한|정답비율|입력조건|출력조건|
+|:---:|:---:|:---:|:---:|:---:|
+|30초|256MB|62%|문제에표기|문제에표기
+
+<br>
+
+### 문제
+
+```
+연월일 순으로 구성된 8자리의 날짜가 입력으로 주어진다.
+```
+
+<img src="/main/common/fileDownload.do?downloadType=CKEditorImages&amp;fileId=AV5QOksKA1QDFAUq">
+
+```
+해당 날짜의 유효성을 판단한 후, 날짜가 유효하다면
+
+[그림1] 과 같이 ”YYYY/MM/DD”형식으로 출력하고,
+
+날짜가 유효하지 않을 경우, -1 을 출력하는 프로그램을 작성하라.
+
+
+연월일로 구성된 입력에서 월은 1~12 사이 값을 가져야 하며
+
+일은 [표1] 과 같이, 1일 ~ 각각의 달에 해당하는 날짜까지의 값을 가질 수 있다.
+```
+
+```
+※ 2월의 경우, 28일인 경우만 고려한다. (윤년은 고려하지 않는다.)
+```
+<img src="/main/common/fileDownload.do?downloadType=CKEditorImages&amp;fileId=AV5QOw9qA1UDFAUq">
+
+```
+[입력]
+
+입력은 첫 줄에 총 테스트 케이스의 개수 T가 온다.
+
+다음 줄부터 각 테스트 케이스가 주어진다.
+
+
+[출력]
+
+테스트 케이스 t에 대한 결과는 “#t”을 찍고, 한 칸 띄고, 정답을 출력한다.
+
+(t는 테스트 케이스의 번호를 의미하며 1부터 시작한다.)
+```
+
+
+<br>
+
+|예제입력|예제출력|
+|:---:|:---:|
+|5|예제출력|
+|22220228|#1 2222/02/28|
+|20150002|#2 -1|
+|01010101|#3 0101/01/01|
+|20140230|#4 -1|
+|11111111|#5 1111/11/11|
+
+<br>
+
+### 문제풀이 전략
+
+1. 메인 로직 처리 
+    - 10으로 나눈 나머지를 더한다.
+    - n 을 10으로 나눈 몫으로 바꾼다.
+
+2. 입력 처리
+    - input=n 받는다.
+
+3. 출력 처리
+    - 문제 조건에 맞게 출력한다.
+
+
+### 답안 전체코드
+
+```py
+def 메인함수(testcase):
+    #yyyy/mm/dd 로나눠야함
+    날짜들 = list()
+    dd=testcase%100
+    testcase=testcase//100
+    mm=testcase%100
+    yyyy=testcase//100
+
+    날짜들.append(yyyy)
+    날짜들.append(mm)
+    날짜들.append(dd) 
+    return 날짜들
+
+def 년전처리(숫자):
+    if 99 < 숫자 < 1000:
+        숫자 = "0%d"%숫자
+    elif 9 < 숫자 < 100:
+        숫자 = "00%d"%숫자
+    elif 0 < 숫자 < 10:
+        숫자 = "000%d"%숫자
+    else:
+        숫자 = "%d"%숫자
+    return 숫자
+    
+def 월일전처리(숫자):
+    if 0 < 숫자 < 10:
+        숫자 = "0%d"%숫자
+    else:
+        숫자 = "%d"%숫자
+    return 숫자
+
+def 검증(날짜들):
+    삼십일일월 = [1,3,5,7,8,10,12]
+    삼십일월 = [4,6,9,11]
+    이월 = [2]
+    if 날짜들[1] in 삼십일일월 and 0<날짜들[2]<32:
+        return True
+    elif 날짜들[1] in 삼십일월 and 0<날짜들[2]<31:
+        return True
+    elif 날짜들[1] in 이월 and 0<날짜들[2]<29:
+        return True
+    else : return False
+
+
+def 입력():
+    n = int(input())
+    i = 0
+    testcaseList = list()
+    while i<n:
+        testcaseList.append(int(input()))
+        i+=1
+    return testcaseList
+
+def 출력(testcaseList):
+    n = 1
+    for 날짜들 in testcaseList:
+        연월일 = 메인함수(날짜들)
+        if 검증(연월일):
+            print("#%d %s/%s/%s"%(n,년전처리(연월일[0]),월일전처리(연월일[1]),월일전처리(연월일[2])))
+        else:
+            print("#%d -1"%n)
+        n+=1
+
+출력(입력())
+```
+
+</details>
