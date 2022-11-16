@@ -442,15 +442,15 @@ testcase,n = 입력()
 </details>
 
 <details>
-<summary>2070_큰 놈, 작은 놈, 같은 놈 노트정리</summary>
+<summary>2058_자릿수 더하기 노트정리</summary>
 
-* [문제링크](https://swexpertacademy.com/main/code/problem/problemDetail.do?problemLevel=1&contestProbId=AV5QQ6qqA40DFAUq&categoryId=AV5QQ6qqA40DFAUq&categoryType=CODE&problemTitle=&orderBy=FIRST_REG_DATETIME&selectCodeLang=ALL&select-1=1&pageSize=10&pageIndex=1)
+* [문제링크](https://swexpertacademy.com/main/code/problem/problemDetail.do?problemLevel=1&contestProbId=AV5QPRjqA10DFAUq&categoryId=AV5QPRjqA10DFAUq&categoryType=CODE&problemTitle=&orderBy=FIRST_REG_DATETIME&selectCodeLang=PYTHON&select-1=1&pageSize=10&pageIndex=1)
 
-## SW Expert Academy 2070번 큰 놈, 작은 놈, 같은 놈
+## SW Expert Academy 2058번 자릿수 더하기
 
 |시간제한|메모리제한|정답비율|입력조건|출력조건|
 |:---:|:---:|:---:|:---:|:---:|
-|30초|256MB|82%|문제에표기|문제에표기
+|30초|256MB|92%|문제에표기|문제에표기
 
 <br>
 
@@ -459,26 +459,22 @@ testcase,n = 입력()
 ```
 [문제]
 
-2개의 수를 입력 받아 크기를 비교하여 등호 또는 부등호를 출력하는 프로그램을 작성하라.
+하나의 자연수를 입력 받아 각 자릿수의 합을 계산하는 프로그램을 작성하라.
 
 
 [제약 사항]
 
-각 수는 0 이상 10000 이하의 정수이다.
+자연수 N은 1부터 9999까지의 자연수이다. (1 ≤ N ≤ 9999)
 
 
 [입력]
 
-가장 첫 줄에는 테스트 케이스의 개수 T가 주어지고, 그 아래로 각 테스트 케이스가 주어진다.
-
-각 테스트 케이스의 첫 번째 줄에는 2개의 수가 주어진다.
+입력으로 자연수 N이 주어진다.
 
 
 [출력]
 
-출력의 각 줄은 '#t'로 시작하고, 공백을 한 칸 둔 다음 정답을 출력한다.
-
-(t는 테스트 케이스의 번호를 의미하며 1부터 시작한다.)
+각 자릿수의 합을 출력한다.
 ```
 
 
@@ -486,17 +482,32 @@ testcase,n = 입력()
 
 |예제입력|예제출력|
 |:---:|:---:|
-|예제입력1|예제출력2|
-|예제입력2|예제출력2|
+|6789|30|
 
 <br>
 
 ### 문제풀이 전략
 
+1. 메인 로직 처리 
+    - 10으로 나눈 나머지를 더한다.
+    - n 을 10으로 나눈 몫으로 바꾼다.
+
+2. 입력 처리
+    - input=n 받는다.
+
+3. 출력 처리
+    - 문제 조건에 맞게 출력한다.
 
 
 ### 답안 전체코드
 
-
+```py
+n = int(input())
+result = 0
+while n>0:
+    result += n%10
+    n=n//10
+print(result)
+```
 
 </details>
