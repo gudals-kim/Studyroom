@@ -16,4 +16,3 @@ def 출력(testcase,n):
 
 testcase,n = 입력()
 출력(testcase,n)
-print(9//2)
