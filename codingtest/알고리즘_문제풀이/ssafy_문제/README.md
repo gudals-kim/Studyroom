@@ -901,3 +901,77 @@ for index in range(len(result)):
 ```
 
 </details>
+
+<details>
+<summary>1954번 달팽이 숫자 노트정리</summary>
+
+* [문제링크](https://swexpertacademy.com/main/code/problem/problemDetail.do?problemLevel=2&contestProbId=AV5PobmqAPoDFAUq&categoryId=AV5PobmqAPoDFAUq&categoryType=CODE&problemTitle=&orderBy=RECOMMEND_COUNT&selectCodeLang=PYTHON&select-1=2&pageSize=10&pageIndex=1)
+
+## SW Expert Academy 1954번 달팽이 숫자
+
+|시간제한|메모리제한|정답비율|입력조건|출력조건|
+|:---:|:---:|:---:|:---:|:---:|
+|30초|256MB|52%|문제에표기|문제에표기
+
+<br>
+
+### 문제
+
+```
+[문제]
+달팽이는 1부터 N*N까지의 숫자가 시계방향으로 이루어져 있다.
+
+다음과 같이 정수 N을 입력 받아 N크기의 달팽이를 출력하시오.
+
+[예제]
+
+N이 3일 경우,
+
+N이 4일 경우,
+ 
+[제약사항]
+
+달팽이의 크기 N은 1 이상 10 이하의 정수이다. (1 ≤ N ≤ 10)
+
+[입력]
+
+가장 첫 줄에는 테스트 케이스의 개수 T가 주어지고, 그 아래로 각 테스트 케이스가 주어진다.
+
+각 테스트 케이스에는 N이 주어진다.
+
+
+[출력]
+
+각 줄은 '#t'로 시작하고, 다음 줄부터 빈칸을 사이에 두고 달팽이 숫자를 출력한다.
+
+(t는 테스트 케이스의 번호를 의미하며 1부터 시작한다.)
+
+```
+
+
+<br>
+
+|예제입력|예제출력|
+|:---:|:---:|
+|입력x|입력x|
+
+
+
+<br>
+
+### 문제풀이 전략
+
+
+- 빈수처리는 dict 자료형을 사용하여 key(점수) :value(출현빈도) 로하여 푼다.
+- 만약 출현빈도가 같은게 있다면 더 높은 점수를 출력하자.
+
+
+
+### 답안 전체코드
+
+```py
+
+
+```
+
+</details>
