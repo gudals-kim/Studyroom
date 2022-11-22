@@ -73,7 +73,22 @@ public class ValidationItemControllerV3 {
     }
 
     @PostMapping("/{itemId}/edit")
-    public String edit(@PathVariable Long itemId, @ModelAttribute Item item) {
+    public String edit(@PathVariable Long itemId,@Validated @ModelAttribute Item item, BindingResult bindingResult) {
+        // 틀정 필드가 아닌 복합 룰 검증법
+        if (item.getPrice() != null && item.getQuantity() != null){
+            int resultPrice = item.getPrice() * item.getQuantity();
+            if (resultPrice < 10000){
+                bindingResult.reject("globalError", "등록 상품의 총액이 10,000원 이상이어야 합니다. 현재 상품 등록 총액 = " + resultPrice + "원 입니다.");
+            }
+        }
+
+        //bindingResult에 Error가 있다면
+        if (bindingResult.hasErrors()){
+            log.info("errors={}",bindingResult);
+            return "validation/v3/editForm";
+        }
+
+
         itemRepository.update(itemId, item);
         return "redirect:/validation/v3/items/{itemId}";
     }
