@@ -9,6 +9,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
+import java.sql.Connection;
 import java.sql.SQLException;
 
 import static hello.jdbc.connection.ConnectionConst.*;
@@ -27,10 +28,10 @@ class MemberServiceV1Test {
     private MemberServiceV1 memberService;
 
     @BeforeEach
-    void before(){
+    void before() throws SQLException {
         DriverManagerDataSource dataSource = new DriverManagerDataSource(URL,USERNAME,PASSWORD);
         memberRepository = new MemberRepositoryV0(dataSource);
-        memberService = new MemberServiceV1(memberRepository);
+        memberService = new MemberServiceV1(dataSource,memberRepository);
     }
 
     @AfterEach
@@ -73,7 +74,7 @@ class MemberServiceV1Test {
         //then
         Member findMemberA = memberRepository.findById(memberA.getMemberId());
         Member findMemberEx = memberRepository.findById(memberEx.getMemberId());
-        assertThat(findMemberA.getMoney()).isEqualTo(8000);
+        assertThat(findMemberA.getMoney()).isEqualTo(10000);
         assertThat(findMemberEx.getMoney()).isEqualTo(10000);
     }
 }
