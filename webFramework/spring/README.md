@@ -37,11 +37,20 @@
 
 ### 서블릿 컨테이너 동작 방식
 
+* 내장 톰캣 서버 생성 <br>
+<img src="https://github.com/gudals-kim/Studyroom/blob/delevlop/webFramework/spring/img/tomcatServer.png">
+
+1. 스프링 부트를 실행하면 스프링부트가 내장톰캣서버를 실행해준다.
+2. 톰캣서버는 서블릿 컨테이너 기능을 가지고있다.
+3. 톰캣이 스프링부트 내에 있는 프로젝트(helloServlet)을 서블릿 컨테이너에 넣어준다.
+4. 이후 HTTP 요청을 기다린다.<br>
 <img src="https://github.com/gudals-kim/Studyroom/blob/delevlop/webFramework/spring/img/rquestAndResponse.png">
+<img src="https://github.com/gudals-kim/Studyroom/blob/delevlop/webFramework/spring/img/webappServerRequestResponse.png">
+5. HTTP 요청 메시지, HTTP 응답 메시지를 request,response 객체를 싱글톤으로 생성해서 helloServlet을 실행시켜준다.
+<br>
 
----
 
-![](https://github.com/gudals-kim/Studyroom/tree/delevlop/webFramework/spring/img/rquestAndResponse.png)
+
 
 
 ## 용어정리
