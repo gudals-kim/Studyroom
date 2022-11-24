@@ -1,5 +1,22 @@
 # 동적 프로그래밍 문제풀이
 
+## 문제풀이 
+
+> 메모리 검사 코드 
+
+```py
+import psutil
+def memory_usage(message: str = 'debug'):
+    # current process RAM usage
+    p = psutil.Process()
+    rss = p.memory_info().rss / 2 ** 20 # Bytes to MB
+    print(f"[{message}] memory usage: {rss: 10.5f} MB")
+
+memory_usage("#1")
+```
+
+> 문제를 클릭하면 각 문제 내용 및 풀이과정이 설명되어 있습니다.
+
 ## 실전 코딩테스트 - 동적계획법
 
 > 일반적인 동적 계획법 문제는 통상 코드 자체는 간결하다 <br> **가장 적은 경우의 수부터 계산을 해본 후 패턴을 찾아 점화식** 을 세우는 것이 핵심이다.
