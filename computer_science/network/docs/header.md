@@ -28,7 +28,7 @@
     - 엔티티 헤더는 엔티티 본문의 데이터를 해석할 수 있는 정보 제공
       - 데이터 유형(html, json), 데이터 길이, 압축 정보 등등
 
-<img src="https://github.com/gudals-kim/Studyroom/blob/delevlop/computer_science/network/img/RFC_body.png" width="700">
+<img src="https://github.com/gudals-kim/Studyroom/blob/delevlop/computer_science/network/img/RFC_body.png" width="400">
 
 ### [RFC7230~7235](https://www.rfc-editor.org/rfc/pdfrfc/rfc7235.txt.pdf)
 
@@ -45,7 +45,7 @@
     
     ~~참고: 표현 헤더는 표현 메타데이터와 페이로드 메시지를 구분해야하지만 여기선 구분하지 않음~~
 
-<img src="https://github.com/gudals-kim/Studyroom/blob/delevlop/computer_science/network/img/RFC72_body.png" width="700">
+<img src="https://github.com/gudals-kim/Studyroom/blob/delevlop/computer_science/network/img/RFC72_body.png" width="400">
 
 ### 표현(Representation)
 
@@ -101,8 +101,12 @@
     3. en-US;q=0.8
     4. en;q=0.7
 * 구체적인 것인 우선이다.
-  * 예) Accept: text/\*, text/plain,text/plain;format=flowed,*/*
+  * 예) Accept: text/\*, text/plain,text/plain;format=flowed,\*/*
     1. text/plain;format=flowed
     2. test/plain
     3. text/*
-    4. */*
+    4. \*/*
+* 구체적인 것을 기준으로 미디어 타입을 맞춘다.
+  - <img src="https://github.com/gudals-kim/Studyroom/blob/delevlop/computer_science/network/img/qualityValues.png" width="300"><br>
+
+## 전송 방식
