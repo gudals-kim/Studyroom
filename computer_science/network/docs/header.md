@@ -88,7 +88,7 @@
 > Accept-Language가 적용이 안된다면 웹 서버는 오로지 서버에 기본 설정된 언어로만 응답을 보낸다.
 
 > Accept-Language 적용후 <br>
-> <img src="https://github.com/gudals-kim/Studyroom/blob/delevlop/computer_science/network/img/proAccept-Language.png" width="700"><br>
+> <img src="https://github.com/gudals-kim/Studyroom/blob/delevlop/computer_science/network/img/proAccept-language.png" width="700"><br>
 > Accept-Language가 적용 된다면 한국으로 국가가 설정된 브라우저는 ko 언어 요청할 것이고 다중 언어 웹서버는 언어 우선순위에 따라서 응답을 보낸다.
 
 #### 우선순위(Quality Values)
