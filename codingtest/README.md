@@ -26,3 +26,14 @@
 |     ***그래프(graph)***      |                                                                [그래프(graph) 개념 링크](https://github.com/gudals-kim/Studyroom/tree/delevlop/codingtest/알고리즘/그래프)                                                                |   [그래프탐색 문제풀이 링크](https://github.com/gudals-kim/Studyroom/tree/delevlop/codingtest/알고리즘_문제풀이/그래프탐색_문제)    | _BFS, DFS, dijkstra 알고리즘 포함_ |
 |     ***최소신장트리(MST)***     |                                                                [최소신장트리(MST) 개념 링크](https://github.com/gudals-kim/Studyroom/tree/delevlop/codingtest/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/%EC%B5%9C%EC%86%8C%20%EC%8B%A0%EC%9E%A5%20%ED%8A%B8%EB%A6%AC)                                                                 |   [그래프탐색 문제풀이 링크](https://github.com/gudals-kim/Studyroom/tree/delevlop/codingtest/알고리즘_문제풀이/그래프탐색_문제)    |      _크루스칼, 프림 알고리즘 포함_      |
 | ***백트래킹(BackTracking)***  |                                                                [백트래킹(BackTracking) 개념 링크](https://github.com/gudals-kim/Studyroom/tree/delevlop/codingtest/알고리즘/탐욕)                                                                 |    [백트래킹 문제풀이 링크](https://github.com/gudals-kim/Studyroom/tree/delevlop/codingtest/알고리즘_문제풀이/백트래킹_문제)     ||
+
+
+## 주요 파이썬 내외장 함수 정리
+
+|    문법 구분     |                                                 링크                                                  |
+|:------------:|:---------------------------------------------------------------------------------------------------:|
+|  lambda 함수   | [lambda 함수 정리 링크](https://github.com/gudals-kim/Studyroom/tree/delevlop/codingtest/파이썬함수/lambda.md) |
+|    map 함수    |    [map 함수 정리 링크](https://github.com/gudals-kim/Studyroom/tree/delevlop/codingtest/파이썬함수/map.md)    |
+|  reduce 함수   |  [reduce 함수 정리 링크](https://github.com/gudals-kim/Studyroom/tree/delevlop/codingtest/파이썬함수/reduce.md)   |
+|  filter 함수   |  [filter 함수 정리 링크](https://github.com/gudals-kim/Studyroom/tree/delevlop/codingtest/파이썬함수/filter.md)   |
+| enumerate 함수 |  [enumerate 함수 정리 링크](https://github.com/gudals-kim/Studyroom/tree/delevlop/codingtest/파이썬함수/enumerate.md)   |
