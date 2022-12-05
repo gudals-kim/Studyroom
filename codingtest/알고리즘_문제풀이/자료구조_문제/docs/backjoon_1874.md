@@ -1,7 +1,9 @@
 
 # [백준 1874번 스택수열](https://www.acmicpc.net/problem/1874)
 
-## <img src="https://github.com/gudals-kim/Studyroom/tree/delevlop/codingtest/img/rank/silver_3.svg"> 백준 1874번 스택수열
+## 백준 1874번 스택수열
+
+<img src="https://github.com/gudals-kim/Studyroom/tree/delevlop/codingtest/img/rank/silver_3.svg">
 
 | 시간제한 |메모리제한|정답비율|입력조건|출력조건|
 |:----:|:---:|:---:|:---:|:---:|
