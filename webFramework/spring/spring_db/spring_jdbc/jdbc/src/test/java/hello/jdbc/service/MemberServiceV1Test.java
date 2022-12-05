@@ -3,14 +3,20 @@ package hello.jdbc.service;
 
 import hello.jdbc.domain.Member;
 import hello.jdbc.repository.MemberRepositoryV0;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.context.TestConfiguration;
+import org.springframework.context.annotation.Bean;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.transaction.PlatformTransactionManager;
 
+import javax.sql.DataSource;
 import java.sql.SQLException;
 
 import static hello.jdbc.connection.ConnectionConst.*;
@@ -18,22 +24,40 @@ import static org.assertj.core.api.Assertions.*;
 
 
 /**
- * 트랜잭션 - 트랜잭션 매니저
+ * 트랜잭션 - @Transactional AOP
  */
+@Slf4j
+@SpringBootTest
 class MemberServiceV1Test {
     public static final String MEMBER_A = "memberA";
     public static final String MEMBER_B = "memberB";
     public static final String MEMBER_EX = "ex";
-
+    @Autowired
     private MemberRepositoryV0 memberRepository;
+    @Autowired
     private MemberServiceV1 memberService;
-    @BeforeEach
-    void before() throws SQLException {
-        DriverManagerDataSource dataSource = new DriverManagerDataSource(URL,USERNAME,PASSWORD);
-        memberRepository = new MemberRepositoryV0(dataSource);
-        PlatformTransactionManager transactionManager = new DataSourceTransactionManager(dataSource);
-        memberService = new MemberServiceV1(transactionManager,memberRepository);
+
+    @TestConfiguration
+    static class TestConfig{
+        @Bean
+        DataSource dataSource(){
+            return new DriverManagerDataSource(URL,USERNAME,PASSWORD);
+        }
+        @Bean
+        PlatformTransactionManager transactionManager(){
+            return new DataSourceTransactionManager(dataSource());
+        }
+        @Bean
+        MemberRepositoryV0 memberRepositoryV0(){
+            return new MemberRepositoryV0(dataSource());
+        }
+        @Bean
+        MemberServiceV1 memberServiceV1(){
+            return new MemberServiceV1(memberRepositoryV0());
+        }
+
     }
+
 
     @AfterEach
     void after() throws SQLException {
