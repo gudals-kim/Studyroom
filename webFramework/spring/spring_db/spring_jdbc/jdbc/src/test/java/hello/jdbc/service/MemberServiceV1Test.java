@@ -7,6 +7,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.transaction.PlatformTransactionManager;
 
@@ -18,7 +19,7 @@ import static org.assertj.core.api.Assertions.*;
 
 
 /**
- * 기본 동작, 트랜잭션이 없어서 문제 발생
+ * 트랜잭션 - 트랜잭션 매니저
  */
 class MemberServiceV1Test {
     public static final String MEMBER_A = "memberA";
@@ -27,11 +28,11 @@ class MemberServiceV1Test {
 
     private MemberRepositoryV0 memberRepository;
     private MemberServiceV1 memberService;
-    private PlatformTransactionManager transactionManager;
     @BeforeEach
     void before() throws SQLException {
         DriverManagerDataSource dataSource = new DriverManagerDataSource(URL,USERNAME,PASSWORD);
         memberRepository = new MemberRepositoryV0(dataSource);
+        PlatformTransactionManager transactionManager = new DataSourceTransactionManager(dataSource);
         memberService = new MemberServiceV1(transactionManager,memberRepository);
     }
 
