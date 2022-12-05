@@ -11,7 +11,6 @@ import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.transaction.PlatformTransactionManager;
 
-import java.sql.Connection;
 import java.sql.SQLException;
 
 import static hello.jdbc.connection.ConnectionConst.*;
