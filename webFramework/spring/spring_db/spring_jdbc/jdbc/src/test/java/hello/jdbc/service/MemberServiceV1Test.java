@@ -25,6 +25,7 @@ import static org.assertj.core.api.Assertions.*;
 
 /**
  * 트랜잭션 - @Transactional AOP
+ * 트랜잭션 - DataSource, transaction manager 자동등록
  */
 @Slf4j
 @SpringBootTest
@@ -39,17 +40,15 @@ class MemberServiceV1Test {
 
     @TestConfiguration
     static class TestConfig{
-        @Bean
-        DataSource dataSource(){
-            return new DriverManagerDataSource(URL,USERNAME,PASSWORD);
+        private final DataSource dataSource;
+
+        public TestConfig(DataSource dataSource) {
+            this.dataSource = dataSource;
         }
-        @Bean
-        PlatformTransactionManager transactionManager(){
-            return new DataSourceTransactionManager(dataSource());
-        }
+
         @Bean
         MemberRepositoryV0 memberRepositoryV0(){
-            return new MemberRepositoryV0(dataSource());
+            return new MemberRepositoryV0(dataSource);
         }
         @Bean
         MemberServiceV1 memberServiceV1(){
