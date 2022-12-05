@@ -8,6 +8,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.transaction.PlatformTransactionManager;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -26,12 +27,12 @@ class MemberServiceV1Test {
 
     private MemberRepositoryV0 memberRepository;
     private MemberServiceV1 memberService;
-
+    private PlatformTransactionManager transactionManager;
     @BeforeEach
     void before() throws SQLException {
         DriverManagerDataSource dataSource = new DriverManagerDataSource(URL,USERNAME,PASSWORD);
         memberRepository = new MemberRepositoryV0(dataSource);
-        memberService = new MemberServiceV1(dataSource,memberRepository);
+        memberService = new MemberServiceV1(transactionManager,memberRepository);
     }
 
     @AfterEach

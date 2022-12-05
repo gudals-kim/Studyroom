@@ -3,6 +3,7 @@ package hello.jdbc.repository;
 
 import hello.jdbc.domain.Member;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.jdbc.datasource.DataSourceUtils;
 import org.springframework.jdbc.support.JdbcUtils;
 
 import javax.sql.DataSource;
@@ -12,7 +13,9 @@ import java.util.NoSuchElementException;
 
 
 /**
- * JDBC - 커넥션 파라미터
+ * 트랜잭션 - 트랜잭션매니저
+ * DataSourceUtils.getConnection()
+ * DataSourceUtils.releaseConnection()
  */
 @Slf4j
 public class MemberRepositoryV0 {
@@ -60,28 +63,6 @@ public class MemberRepositoryV0 {
             throw e;
         } finally {
             close(con,pstmt,null);
-        }
-    }
-    public void update(Connection con,String memberId, int money) throws SQLException {
-        String sql = "update member set money=? where member_id=?";
-
-        PreparedStatement pstmt = null;
-        try {
-
-            pstmt = con.prepareStatement(sql);//데이터베이스에 전달할 SQL과 파라미터로 전달할 데이터들을 준비
-            pstmt.setInt(1, money);
-            pstmt.setString(2, memberId);
-
-            //executeUpdate() 는 쿼리를 실행하고 영향받은 row수를 반환한다.
-            // 여기서는 하나의 데이터만 변경하기 때문에 결과로 1이 반환된다.
-            // 만약 회원이 100명이고, 모든 회원의 데이터를 한번에 수정하는 update sql 을 실행하면 결과는 100이 된다.
-            int resultSize = pstmt.executeUpdate();
-            log.info("resultSize={}",resultSize);
-        } catch (SQLException e) {
-            log.error("db error", e);
-            throw e;
-        } finally {
-            JdbcUtils.closeStatement(pstmt);
         }
     }
 
@@ -138,37 +119,6 @@ public class MemberRepositoryV0 {
         }
     }
 
-    public Member findById(Connection con, String memberId) throws SQLException {
-        String sql = "select * from member where member_id = ?";//데이터 조회를 위한 select SQL
-
-        PreparedStatement pstmt = null;
-        ResultSet rs = null;
-        try {
-            pstmt = con.prepareStatement(sql);
-            pstmt.setString(1,memberId);
-
-            //데이터를 변경할 때는 executeUpdate() 를 사용하지만, 데이터를 조회할 때는 executeQuery() 를 사용한다.
-            //executeQuery() 는 결과를 ResultSet 에 담아서 반환한다.
-            //ResultSetd 내부에는 커서가 있다.
-            rs = pstmt.executeQuery();
-            if (rs.next()){//rs.next() : 이것을 호출하면 커서가 다음으로 이동한다.
-                Member member = new Member();
-                member.setMemberId(rs.getString("member_id"));//현재 커서가 가리키고 있는 위치의 member_id 데이터를 String 타입으로 반환한다.
-                member.setMoney(rs.getInt("money"));//현재 커서가 가리키고 있는 위치의 money 데이터를 int 타입으로 반환한다.
-
-                return member;
-            }else {//커서에서 데이터가 없을때?
-                throw new NoSuchElementException("member not found memberId =" + memberId);
-            }
-        } catch (SQLException e) {
-            log.error("db error",e);
-            throw e;
-        }finally {
-            JdbcUtils.closeResultSet(rs);
-            JdbcUtils.closeStatement(pstmt);
-//            JdbcUtils.closeConnection(con);
-        }
-    }
 
     /**
      *쿼리를 실행하고 나면 리소스를 정리해야 한다. 여기서는 Connection , PreparedStatement 를 사용했다.
@@ -185,12 +135,16 @@ public class MemberRepositoryV0 {
     private void close(Connection con, Statement stmt, ResultSet rs){
         JdbcUtils.closeResultSet(rs);
         JdbcUtils.closeStatement(stmt);
-        JdbcUtils.closeConnection(con);
+
+        //트랜잭션 동기화를 사용할려면 DataSourceUtils에서 사용해야한다.
+        DataSourceUtils.releaseConnection(con,dataSource);
+
     }
 
 
     private Connection getConnection() throws SQLException {
-        Connection con = dataSource.getConnection();
+        //트랜잭션 동기화를 사용하려면 DataSourceUtils에서 사용해야한다.
+        Connection con = DataSourceUtils.getConnection(dataSource);
         log.info("get connection={}, class={}",con,con.getClass());
         return con;
     }
