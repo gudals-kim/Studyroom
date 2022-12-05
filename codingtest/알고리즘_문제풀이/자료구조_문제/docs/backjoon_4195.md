@@ -1,11 +1,11 @@
 
 # [백준 4195번 친구 네트워크](https://www.acmicpc.net/problem/4195)
 
-## 4195번 친구 네트워크
+## <img src="https://raw.githubusercontent.com/gudals-kim/Studyroom/0c61bf1ad9b6434ff624dbab4012654df8c92b01/codingtest/img/rank/gold_2.svg" width="20">  4195번 친구 네트워크
 
-| 시간제한 | 메모리제한 |정답비율|입력조건|출력조건|
-|:----:|:-----:|:---:|:---:|:---:|
-|  3초  | 256MB |25%|문제에표기|문제에표기|
+| 시간제한 | 메모리제한 |정답비율| 난이도 |
+|:----:|:-----:|:---:|:---:|
+|  3초  | 256MB |25%| 골드2 |
 
 <br>
 

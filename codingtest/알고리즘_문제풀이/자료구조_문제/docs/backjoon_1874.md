@@ -1,12 +1,12 @@
 
 # [백준 1874번 스택수열](https://www.acmicpc.net/problem/1874)
 
-## 백준 1874번 스택수열
+## <img src="https://raw.githubusercontent.com/gudals-kim/Studyroom/0c61bf1ad9b6434ff624dbab4012654df8c92b01/codingtest/img/rank/silver_3.svg" width="20">  백준 1874번 스택수열
 
 
-| 시간제한 |메모리제한|정답비율|                                                                           난이도                                                                           
-|:----:|:---:|:---:|:-------------------------------------------------------------------------------------------------------------------------------------------------------:|
-|  2초  |128MB|36%| <img src="https://raw.githubusercontent.com/gudals-kim/Studyroom/0c61bf1ad9b6434ff624dbab4012654df8c92b01/codingtest/img/rank/silver_3.svg" width="20"> |
+| 시간제한 |메모리제한|정답비율| 난이도 | 
+|:----:|:---:|:---:|:---:|
+|  2초  |128MB|36%| 실버3 |
 
 <br>
 

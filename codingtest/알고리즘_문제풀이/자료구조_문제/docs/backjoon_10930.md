@@ -1,11 +1,11 @@
 
 # [백준 10930번 SHA-256](https://www.acmicpc.net/problem/10930)
 
-## 백준 10930번 SHA-256
+## <img src="https://raw.githubusercontent.com/gudals-kim/Studyroom/0c61bf1ad9b6434ff624dbab4012654df8c92b01/codingtest/img/rank/unrank.svg" width="20"> 백준 10930번 SHA-256
 
-| 시간제한 |메모리제한| 정답비율 |입력조건|출력조건|
-|:----:|:---:|:----:|:---:|:---:|
-|  1초  |256MB| 76%  |문제에표기|문제에표기|
+| 시간제한 |메모리제한| 정답비율 |   난이도    |
+|:----:|:---:|:----:|:--------:|
+|  1초  |256MB| 76%  | unRanked |
 
 <br>
 
