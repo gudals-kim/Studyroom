@@ -28,12 +28,15 @@
 | ***백트래킹(BackTracking)***  |                                                                [백트래킹(BackTracking) 개념 링크](https://github.com/gudals-kim/Studyroom/tree/delevlop/codingtest/알고리즘/탐욕)                                                                 |    [백트래킹 문제풀이 링크](https://github.com/gudals-kim/Studyroom/tree/delevlop/codingtest/알고리즘_문제풀이/백트래킹_문제)     ||
 
 
-## 주요 파이썬 내외장 함수 정리
+## 주요 파이썬 내외장 함수 및 모듈 정리
 
-|    문법 구분     |                                                 링크                                                  |
-|:------------:|:---------------------------------------------------------------------------------------------------:|
-|  lambda 함수   | [lambda 함수 정리 링크](https://github.com/gudals-kim/Studyroom/tree/delevlop/codingtest/파이썬함수/lambda.md) |
-|    map 함수    |    [map 함수 정리 링크](https://github.com/gudals-kim/Studyroom/tree/delevlop/codingtest/파이썬함수/map.md)    |
-|  reduce 함수   |  [reduce 함수 정리 링크](https://github.com/gudals-kim/Studyroom/tree/delevlop/codingtest/파이썬함수/reduce.md)   |
-|  filter 함수   |  [filter 함수 정리 링크](https://github.com/gudals-kim/Studyroom/tree/delevlop/codingtest/파이썬함수/filter.md)   |
-| enumerate 함수 |  [enumerate 함수 정리 링크](https://github.com/gudals-kim/Studyroom/tree/delevlop/codingtest/파이썬함수/enumerate.md)   |
+|    문법 구분     |                                                    링크                                                     |
+|:------------:|:---------------------------------------------------------------------------------------------------------:|
+|  lambda 함수   |    [lambda 함수 정리 링크](https://github.com/gudals-kim/Studyroom/tree/delevlop/codingtest/파이썬함수/lambda.md)    |
+|    map 함수    |       [map 함수 정리 링크](https://github.com/gudals-kim/Studyroom/tree/delevlop/codingtest/파이썬함수/map.md)       |
+|  reduce 함수   |    [reduce 함수 정리 링크](https://github.com/gudals-kim/Studyroom/tree/delevlop/codingtest/파이썬함수/reduce.md)    |
+|  filter 함수   |    [filter 함수 정리 링크](https://github.com/gudals-kim/Studyroom/tree/delevlop/codingtest/파이썬함수/filter.md)    |
+| enumerate 함수 | [enumerate 함수 정리 링크](https://github.com/gudals-kim/Studyroom/tree/delevlop/codingtest/파이썬함수/enumerate.md) |
+|  sorted 함수   |    [sorted 함수 정리 링크](https://github.com/gudals-kim/Studyroom/tree/delevlop/codingtest/파이썬함수/sorted.md)    |
+|   join 함수    |      [join 함수 정리 링크](https://github.com/gudals-kim/Studyroom/tree/delevlop/codingtest/파이썬함수/join.md)      |
+|   heapq 모듈   |     [heapq 모듈 정리 링크](https://github.com/gudals-kim/Studyroom/tree/delevlop/codingtest/파이썬함수/heapq.md)     |
