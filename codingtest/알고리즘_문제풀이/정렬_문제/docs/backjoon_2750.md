@@ -1,7 +1,7 @@
 
 # [백준 2750번 수 정렬 하기](https://www.acmicpc.net/problem/2750)
 
-## <img src="https://raw.githubusercontent.com/gudals-kim/Studyroom/0c61bf1ad9b6434ff624dbab4012654df8c92b01/codingtest/img/rank/bronze_2.svg" width="20">  백준 1874번 스택수열
+## <img src="https://raw.githubusercontent.com/gudals-kim/Studyroom/0c61bf1ad9b6434ff624dbab4012654df8c92b01/codingtest/img/rank/bronze_2.svg" width="20">  백준 2750번 수 정렬하기
 
 
 | 시간제한 |메모리제한| 정답비율 | 난이도  | 
