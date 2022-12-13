@@ -26,6 +26,7 @@ public class HomeController {
     @GetMapping("/")
     public String homeLogin(
             @Login Member loginMember, Model model) {
+        log.info("loginMember={}",loginMember);
         //로그인
         if (loginMember == null){
             return "home";
