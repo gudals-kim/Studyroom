@@ -105,5 +105,17 @@
 
 ```py
 import sys
-
+N = int(sys.stdin.readline())
+result = 0
+while N > 0:
+    M = 0
+    _ = True
+    while _:
+        M+=1
+        if M > N:
+            _ = False
+            continue
+        N=N-M
+        result+=1
+print(result)
 ```
