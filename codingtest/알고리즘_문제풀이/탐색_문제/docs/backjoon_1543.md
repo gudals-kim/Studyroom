@@ -108,8 +108,16 @@ aa
 
 
 ### 답안 전체코드
-
+#### replace 활용
 ```py
 import sys
-
+input = sys.stdin.readline
+문서 = input()
+단어 = input()
+print(문서[:-1].replace(단어[:-1], '_').count('_'))
+```
+#### count 활용
+```py
+import sys
+print(input().count(input()))
 ```
