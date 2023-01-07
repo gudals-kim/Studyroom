@@ -12,7 +12,19 @@ for test_case in range(1,T+1):
     startTime = time.time()
     print("--------여기부터 답안 출력입니다.--------")
     # ======== 답안지 작성을 합니다 =========
-
+    N = int(sys.stdin.readline())
+    result = 0
+    while N > 0:
+        M = 0
+        _ = True
+        while _:
+            M+=1
+            if M > N:
+                _ = False
+                continue
+            N=N-M
+            result+=1
+    print(result)
     # ==================================
     print("--------여기까지 답안 출력입니다.--------")
     rss = p.memory_info().rss / 2 ** 20  # Bytes to MB
