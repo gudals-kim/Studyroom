@@ -119,5 +119,21 @@
 
 ```py
 import sys
-
+datalist = [0]*(int(input()))
+left = 0
+right = 0
+maxNum = 0
+for index in range(len(datalist)):
+    data = int(input())
+    if maxNum < data:
+        maxNum = data
+        left+=1
+    datalist[index] = data
+maxNum = 0
+for index in range(len(datalist)-1,-1,-1):
+    if maxNum < datalist[index]:
+        maxNum = datalist[index]
+        right += 1
+print(left)
+print(right)
 ```
