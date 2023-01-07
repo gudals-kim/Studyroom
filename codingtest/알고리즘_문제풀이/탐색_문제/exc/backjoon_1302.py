@@ -12,7 +12,13 @@ for test_case in range(1,T+1):
     startTime = time.time()
     print("--------여기부터 답안 출력입니다.--------")
     # ======== 답안지 작성을 합니다 =========
-
+    from collections import defaultdict
+    N = int(sys.stdin.readline())
+    int_dict = defaultdict(int)
+    for i in range(N):
+        key = input()
+        int_dict[key]+=1
+    print(sorted([k for k, v in int_dict.items() if max(int_dict.values()) == v])[0])
     # ==================================
     print("--------여기까지 답안 출력입니다.--------")
     rss = p.memory_info().rss / 2 ** 20  # Bytes to MB
