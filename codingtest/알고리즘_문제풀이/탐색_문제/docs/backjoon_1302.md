@@ -124,5 +124,11 @@ soul
 
 ```py
 import sys
-
+from collections import defaultdict
+N = int(sys.stdin.readline())
+int_dict = defaultdict(int)
+for i in range(N):
+    key = input()
+    int_dict[key]+=1
+print(sorted([k for k, v in int_dict.items() if max(int_dict.values()) == v])[0])
 ```
