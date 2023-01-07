@@ -12,7 +12,7 @@ for test_case in range(1,T+1):
     startTime = time.time()
     print("--------여기부터 답안 출력입니다.--------")
     # ======== 답안지 작성을 합니다 =========
-
+    print(input().count(input()))
     # ==================================
     print("--------여기까지 답안 출력입니다.--------")
     rss = p.memory_info().rss / 2 ** 20  # Bytes to MB
