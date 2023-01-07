@@ -12,7 +12,23 @@ for test_case in range(1,T+1):
     startTime = time.time()
     print("--------여기부터 답안 출력입니다.--------")
     # ======== 답안지 작성을 합니다 =========
-
+    datalist = [0]*(int(input()))
+    left = 0
+    right = 0
+    maxNum = 0
+    for index in range(len(datalist)):
+        data = int(input())
+        if maxNum < data:
+            maxNum = data
+            left+=1
+        datalist[index] = data
+    maxNum = 0
+    for index in range(len(datalist)-1,-1,-1):
+        if maxNum < datalist[index]:
+            maxNum = datalist[index]
+            right += 1
+    print(left)
+    print(right)
     # ==================================
     print("--------여기까지 답안 출력입니다.--------")
     rss = p.memory_info().rss / 2 ** 20  # Bytes to MB
