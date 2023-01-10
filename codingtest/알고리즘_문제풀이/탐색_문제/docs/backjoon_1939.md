@@ -59,12 +59,62 @@
 
 
 #### 문제풀이 핵심 아이디어
+> A, B의 모든 경로 중 가중치의 최대값을 구하여라.<br>
 
+- 다리의 개수 M은 최대 100,000이며, 중량 제한 C는 최대 1,000,000,000 입니다.
+- 이진 탐색을 이용하여 O(M logC)에 문제를 해결해야 합니다.
+- 한 번의 이동에서 옮길 수 있는 물품들의 중량의 최댓값을 이진 탐색으로 찾습니다.
+> 이진탐색을 이용해서 C를 구하자!<br>
 
-
+#### 문제풀이 프로세스
+- 반복적으로 중량을 설정하며, 이동이 가능한 경우를 찾습니다. (시작노드:1, 도착노드:3)
+  <img src="https://github.com/gudals-kim/Studyroom/blob/delevlop/codingtest/img/backjoon_1939_1.png?raw=true">
+  - 1과 이어진 모든 경로
+    - 최대 중량 = 9
+    - 최소 중량 = 2
+  - 이후 9과 2의 중간 중량을 찾고, 그 중간 중량일때, bfs로 섬이 이어지는지 찾는다.
+    - 9와 2의 중간 중량 = 5일때, 섬이 이어지는경우
+      - 최대 중량을 5로 저장한 후 5와 9의 중간값 7의 중량을 찾는다.
+      - 최대 중량 7로 길이 이어지는지 탐색한다.
+    - 9와 2의 중간 중량 = 5일때, 섬이 이어지지 않는경우
+      - 2와 4의 중간값 3으로 이어지는지 탐색한다.
 ### 답안 전체코드
 
 ```py
 import sys
+from collections import deque
+n, m = map(int, input().split())
+adj = [[] for _ in range(n+1)]
+def bfs(c):
+    queue = deque([start_node])
+    visited = [False] * (n+1)
+    visited[start_node] = True
+    while queue:
+       x = queue.popleft()
+       for y, weight in adj[x]:
+           if not visited[y] and weight >= c:
+                visited[y] = True
+                queue.append(y)
+    return visited[end_node]
 
+start = 1000000000
+end = 1
+
+for _ in range(m):
+    x, y ,weight = map(int, input().split())
+    adj[x].append((y, weight))
+    adj[y].append((x, weight))
+    start = min(start, weight)
+    end = max(end, weight)
+
+start_node, end_node = map(int, input().split())
+result = start
+while(start<=end):
+    mid = (start + end)//2
+    if bfs(mid):
+        result = mid
+        start = mid + 1
+    else:
+        end = mid - 1
+print(result)
 ```
