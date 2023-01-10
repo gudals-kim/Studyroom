@@ -35,7 +35,7 @@ for test_case in range(1,T+1):
                 value = 집의좌표들[i]
                 #공유기를 설치할 집을 찾았으니 count를 올린다.
                 count+=1
-    
+
         if count >= 공유기의개수:
             minGap = gap+1
             result = gap
