@@ -8,7 +8,6 @@
 |:----:|:-----:|:----:|:---:|
 |  2초  | 128MB | 66%  | 실버1 |
 
-<br>
 ---
 
 ### 문제
@@ -63,11 +62,54 @@ DBEGFCA
 
 
 #### 문제풀이 핵심 아이디어
+- 전위 순회 : 루트 -> 왼쪽 -> 오른쪽
+- 중위 순회 : 왼쪽 -> 루트 -> 오른쪽
+  - 중위 순회의 특징 
+    - 트리를 왼쪽부터 순서대로 읽으면 그게 순회 순서이다.
+- 후위 순회 : 왼쪽 -> 오른쪽 -> 루트
+
+> 재귀적으로 구현해야하기 때문에 재귀 개념을 명확하게 이해해야한다.
+
 
 
 ### 답안 전체코드
 
 ```py
 import sys
+n = int(input())
+tree = {}
+
+class Node:
+  def __init__(self, data, left_node, right_node):
+    self.data = data
+    self.left_node = left_node
+    self.right_node = right_node
+def 전위순회(node):
+  print(node.data, end='')
+  if node.left_node != '.':
+    전위순회(tree[node.left_node])
+  if node.right_node != '.':
+    전위순회(tree[node.right_node])
+def 중위순회(node):
+  if node.left_node != '.':
+    중위순회(tree[node.left_node])
+  print(node.data, end='')
+  if node.right_node != '.':
+    중위순회(tree[node.right_node])
+def 후위순회(node):
+  if node.left_node != '.':
+    후위순회(tree[node.left_node])
+  if node.right_node != '.':
+    후위순회(tree[node.right_node])
+  print(node.data, end='')
+
+for i in range(n):
+  data, left_node, right_node = input().split()
+  tree[data] = Node(data, left_node, right_node)
+전위순회(tree['A'])
+print()
+중위순회(tree['A'])
+print()
+후위순회(tree['A'])
 
 ```
