@@ -2,6 +2,7 @@ package hello.jdbc.service;
 
 
 import hello.jdbc.domain.Member;
+import hello.jdbc.repository.MemberRepository;
 import hello.jdbc.repository.MemberRepositoryV0;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.AfterEach;
@@ -34,7 +35,7 @@ class MemberServiceV1Test {
     public static final String MEMBER_B = "memberB";
     public static final String MEMBER_EX = "ex";
     @Autowired
-    private MemberRepositoryV0 memberRepository;
+    private MemberRepository memberRepository;
     @Autowired
     private MemberServiceV1 memberService;
 
@@ -47,7 +48,7 @@ class MemberServiceV1Test {
         }
 
         @Bean
-        MemberRepositoryV0 memberRepositoryV0(){
+        MemberRepository memberRepositoryV0(){
             return new MemberRepositoryV0(dataSource);
         }
         @Bean
@@ -59,7 +60,7 @@ class MemberServiceV1Test {
 
 
     @AfterEach
-    void after() throws SQLException {
+    void after() {
         memberRepository.delete(MEMBER_A);
         memberRepository.delete(MEMBER_B);
         memberRepository.delete(MEMBER_EX);
@@ -67,7 +68,7 @@ class MemberServiceV1Test {
 
     @Test
     @DisplayName("정상 이체")
-    void accountTransfer() throws SQLException {
+    void accountTransfer() {
         //given
         Member memberA = new Member(MEMBER_A, 10000);
         Member memberB = new Member(MEMBER_B, 10000);
@@ -84,7 +85,7 @@ class MemberServiceV1Test {
 
     @Test
     @DisplayName("이체 중 예외 발생")
-    void accountTransferEx() throws SQLException {
+    void accountTransferEx() {
         //given
         Member memberA = new Member(MEMBER_A, 10000);
         Member memberEx = new Member(MEMBER_EX, 10000);
