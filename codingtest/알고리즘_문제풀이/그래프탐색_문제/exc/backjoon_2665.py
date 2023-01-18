@@ -2,7 +2,7 @@ import time
 import datetime
 import psutil
 import sys
-inputData = "/Users/gudals/Documents/github/Studyroom/codingtest/알고리즘_문제풀이/동적프로그래밍_문제/input/backjoon_2665.txt"
+inputData = "/Users/gudals/Documents/github/Studyroom/codingtest/알고리즘_문제풀이/그래프탐색_문제/input/backjoon_2665.txt"
 
 p = psutil.Process()
 
