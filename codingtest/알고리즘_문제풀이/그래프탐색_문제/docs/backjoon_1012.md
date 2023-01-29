@@ -26,7 +26,7 @@
 <br> 0은 배추가 심어져 있지 않은 땅이고, 1은 배추가 심어져 있는 땅을 나타낸다.
 <br> 
 
-<img src="/Users/gudals/Documents/github/Studyroom/codingtest/img/backjoon_1012_1.png">
+<img src="https://github.com/gudals-kim/Studyroom/blob/delevlop/codingtest/img/backjoon_1012_1.png?raw=true">
 
 
 ### 예제 입출력

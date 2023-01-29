@@ -24,7 +24,9 @@
 <br>
 <br>
 
-<img src="/Users/gudals/Documents/github/Studyroom/codingtest/img/backjoon_2606_1.png">
+<img src="https://github.com/gudals-kim/Studyroom/blob/delevlop/codingtest/img/backjoon_2606_1.png?raw=true">
+
+
 <br>
 
 <br> 어느 날 1번 컴퓨터가 웜 바이러스에 걸렸다.

@@ -33,7 +33,7 @@
 <br> 또, 거의 최단 경로가 없는 경우도 있다.
 <br> 
 
-<img src="/Users/gudals/Documents/github/Studyroom/codingtest/img/backjoon_5719_1.png">
+<img src="https://github.com/gudals-kim/Studyroom/blob/delevlop/codingtest/img/backjoon_5719_1.png?raw=true">
 
 ### 예제 입출력
 
