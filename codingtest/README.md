@@ -21,20 +21,20 @@
 |          [해쉬(Hash)란?](https://github.com/gudals-kim/Studyroom/tree/delevlop/codingtest/자료구조/해쉬)          |
 |          [트리(Tree)란?](https://github.com/gudals-kim/Studyroom/tree/delevlop/codingtest/자료구조/트리)          |
 |          [힙(heap)이란?](https://github.com/gudals-kim/Studyroom/tree/delevlop/codingtest/자료구조/힙)           |
-> 자료구조의 [문제풀이도 볼래?](https://github.com/gudals-kim/Studyroom/tree/delevlop/codingtest/알고리즘_문제풀이/자료구조_문제)
+> 자료구조의 [문제 유형도 볼래?](https://github.com/gudals-kim/Studyroom/tree/delevlop/codingtest/알고리즘_문제풀이/자료구조_문제)
 
 ### algorithm
 
-|알고리즘 개념 링크|알고리즘 문제풀이 링크|비고|
-|:---:|:---:|:---:|
-|[정렬(sort)이란?](https://github.com/gudals-kim/Studyroom/tree/delevlop/codingtest/알고리즘/정렬)|정렬 [문제풀이 보기](https://github.com/gudals-kim/Studyroom/tree/delevlop/codingtest/알고리즘_문제풀이/정렬_문제)||
-|[동적계획법(DP)이란?](https://github.com/gudals-kim/Studyroom/tree/delevlop/codingtest/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/%EB%8F%99%EC%A0%81%20%EA%B3%84%ED%9A%8D%EB%B2%95%EA%B3%BC%20%EB%B6%84%ED%95%A0%20%EC%A0%95%EB%B3%B5)|동적 프로그래밍 [문제풀이 보기](https://github.com/gudals-kim/Studyroom/tree/delevlop/codingtest/알고리즘_문제풀이/동적프로그래밍_문제)|_분할정복 포함_|
-|[재귀(recursive call)란?](https://github.com/gudals-kim/Studyroom/tree/delevlop/codingtest/알고리즘/재귀)|재귀 [문제풀이 보기](https://github.com/gudals-kim/Studyroom/tree/delevlop/codingtest/알고리즘_문제풀이/재귀_문제)||
-|[탐색(search)이란?](https://github.com/gudals-kim/Studyroom/tree/delevlop/codingtest/알고리즘/탐색)|탐색 [문제풀이 보기](https://github.com/gudals-kim/Studyroom/tree/delevlop/codingtest/알고리즘_문제풀이/탐색_문제)|
-|[탐욕(greedy)이란?](https://github.com/gudals-kim/Studyroom/tree/delevlop/codingtest/알고리즘/탐욕)|탐욕 [문제풀이 보기](https://github.com/gudals-kim/Studyroom/tree/delevlop/codingtest/알고리즘_문제풀이/탐욕_문제)||
-|[그래프(graph)란?](https://github.com/gudals-kim/Studyroom/tree/delevlop/codingtest/알고리즘/그래프)|그래프탐색 [문제풀이 보기](https://github.com/gudals-kim/Studyroom/tree/delevlop/codingtest/알고리즘_문제풀이/그래프탐색_문제) | _BFS, DFS, dijkstra 알고리즘 포함_ |
-|[최소신장트리(MST)이란?](https://github.com/gudals-kim/Studyroom/tree/delevlop/codingtest/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/%EC%B5%9C%EC%86%8C%20%EC%8B%A0%EC%9E%A5%20%ED%8A%B8%EB%A6%AC)|최소신장트리 [문제풀이 보기](https://github.com/gudals-kim/Studyroom/tree/delevlop/codingtest/알고리즘_문제풀이/그래프탐색_문제)|_크루스칼, 프림 알고리즘 포함_|
-|[백트래킹(BackTracking)이란?](https://github.com/gudals-kim/Studyroom/tree/delevlop/codingtest/알고리즘/탐욕)|백트래킹 [문제풀이 보기](https://github.com/gudals-kim/Studyroom/tree/delevlop/codingtest/알고리즘_문제풀이/백트래킹_문제)||
+|알고리즘 개념 링크|                                                알고리즘 문제풀이 링크                                                |비고|
+|:---:|:----------------------------------------------------------------------------------------------------------:|:---:|
+|[정렬(sort)이란?](https://github.com/gudals-kim/Studyroom/tree/delevlop/codingtest/알고리즘/정렬)|   ***정렬*** [문제 유형 보기](https://github.com/gudals-kim/Studyroom/tree/delevlop/codingtest/알고리즘_문제풀이/정렬_문제)    ||
+|[동적계획법(DP)이란?](https://github.com/gudals-kim/Studyroom/tree/delevlop/codingtest/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/%EB%8F%99%EC%A0%81%20%EA%B3%84%ED%9A%8D%EB%B2%95%EA%B3%BC%20%EB%B6%84%ED%95%A0%20%EC%A0%95%EB%B3%B5)| ***동적 프로그래밍*** [문제 유형 보기](https://github.com/gudals-kim/Studyroom/tree/delevlop/codingtest/알고리즘_문제풀이/동적프로그래밍_문제) |_분할정복 포함_|
+|[재귀(recursive call)란?](https://github.com/gudals-kim/Studyroom/tree/delevlop/codingtest/알고리즘/재귀)|      ***재귀*** [문제 유형 보기](https://github.com/gudals-kim/Studyroom/tree/delevlop/codingtest/알고리즘_문제풀이/재귀_문제)       ||
+|[탐색(search)이란?](https://github.com/gudals-kim/Studyroom/tree/delevlop/codingtest/알고리즘/탐색)|      ***탐색*** [문제 유형 보기](https://github.com/gudals-kim/Studyroom/tree/delevlop/codingtest/알고리즘_문제풀이/탐색_문제)       |
+|[탐욕(greedy)이란?](https://github.com/gudals-kim/Studyroom/tree/delevlop/codingtest/알고리즘/탐욕)|      ***탐욕*** [문제 유형 보기](https://github.com/gudals-kim/Studyroom/tree/delevlop/codingtest/알고리즘_문제풀이/탐욕_문제)       ||
+|[그래프(graph)란?](https://github.com/gudals-kim/Studyroom/tree/delevlop/codingtest/알고리즘/그래프)|   ***그래프탐색*** [문제 유형 보기](https://github.com/gudals-kim/Studyroom/tree/delevlop/codingtest/알고리즘_문제풀이/그래프탐색_문제)    | _BFS, DFS, dijkstra 알고리즘 포함_ |
+|[최소신장트리(MST)이란?](https://github.com/gudals-kim/Studyroom/tree/delevlop/codingtest/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/%EC%B5%9C%EC%86%8C%20%EC%8B%A0%EC%9E%A5%20%ED%8A%B8%EB%A6%AC)|   ***최소신장트리*** [문제 유형 보기](https://github.com/gudals-kim/Studyroom/tree/delevlop/codingtest/알고리즘_문제풀이/그래프탐색_문제)   |_크루스칼, 프림 알고리즘 포함_|
+|[백트래킹(BackTracking)이란?](https://github.com/gudals-kim/Studyroom/tree/delevlop/codingtest/알고리즘/탐욕)|    ***백트래킹*** [문제 유형 보기](https://github.com/gudals-kim/Studyroom/tree/delevlop/codingtest/알고리즘_문제풀이/백트래킹_문제)     ||
 
 
 ## 주요 파이썬 내외장 함수 및 모듈 정리
