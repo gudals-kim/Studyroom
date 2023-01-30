@@ -50,11 +50,47 @@
 
 #### 문제풀이 핵심 아이디어
 
+- 특정 위치까지 이동하는 최단 시간을 계산해야 하는 문제이다.
+- 이동 시간이 모두 1초로 동일하므로, 간단히 BFS를 이용하여 해결할 수 있습니다.
+- 큐(Queue) 구현을 위해 collections 라이브러리의 deque를 이용한다.
+
+> 5에서 12로 가는 최단 시간은 다음과 같이 계산할 수 있다. 이때의 간선의 가중치는 1 (1초가 걸리기 때문)
+- 5
+  - 5 - 1 (4)
+    - 4 - 1 (3)
+    - 4 + 1 (5) 이미 다녀온 정점
+    - 4 * 2 (8)
+  - 5 + 1 (6)
+    - 6 - 1 (5) 이미 다녀온 정점
+    - 6 + 1 (7)
+    - 6 * 2 (12) 
+      - 12를 찾았기 때문에 루트 노드와의 거리(depth*1)를 구하면 된다.
+  - 5 * 2 (10)
+    - 10 - 1 (9)
+    - 10 + 1 (11)
+    - 10 * 2 (20)
 
 
 
 ### 답안 전체코드
 
 ```py
+from collections import deque
 
+MAX = 100001
+n, k = map(int, input().split())
+result = [0] * MAX
+
+def bfs(n,k):
+    visited = deque([n])
+    while visited:
+        node = visited.popleft()
+        if node == k:
+            return result[node]
+        for nextNode in (node-1, node+1, node * 2):
+            if 0<= nextNode < MAX and not result[nextNode]:
+                # 다음 노드로 넘어갈 경우 현재 노드의 값에 1을 더한다 (그래프의 depth와 같음)
+                result[nextNode] = result[node] + 1
+                visited.append(nextNode)
+print(bfs(n,k))
 ```
