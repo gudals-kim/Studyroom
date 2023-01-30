@@ -11,9 +11,6 @@
 ---
 
 ### 문제
-  
-
-
 
 
 <br> 해커 김지민은 잘 알려진 어느 회사를 해킹하려고 한다.
@@ -58,11 +55,83 @@
 
 #### 문제풀이 핵심 아이디어
 
-
+- 모든 정점에 대하여 DFS 및 BFS를 수행 한다.
+- ***DFS 혹은 BFS를 수행할 때 마다 방문하게 되는 노드의 개수를 계산***하면 된다.
+- 가장 노드의 개수가 크게 되는 시작 정점을 출력한다.
 
 
 ### 답안 전체코드
-
+#### 답안 1
 ```py
+from collections import defaultdict, deque
+import sys
+input = sys.stdin.readline
+n, m = map(int,input().split())
+graph = defaultdict(list)
+for _ in range(m):
+    a, b = map(int, input().split())
+    graph[b].append(a)
+def bfs(graph, startNode):
+    result = list()
+    visited = deque([startNode])
+    while visited:
+        node = visited.popleft()
+        if node not in result:
+            result.append(node)
+            visited += graph[node]
+    return len(result)
 
+answer = list()
+maxNum = 0
+array = graph.keys()
+for computer in range(1,n+1):
+    numberOfHacks = bfs(graph,computer)
+    if maxNum <= numberOfHacks:
+        maxNum = numberOfHacks
+        answer.append(computer)
+print(" ".join(str(x) for x in sorted(answer)))
+```
+
+#### 답안 2
+```python
+from collections import  deque
+import sys
+input = sys.stdin.readline
+
+n, m = map(int, input().split())
+graph = [[] for _ in range(n+1)]
+
+for _ in range(m):
+    x, y = map(int, input().split())
+    graph[y].append(x)
+
+def bfs(startNode):
+    q = deque([startNode])
+    #방문 여부 체크
+    visited = [False] * (n+1)
+    visited[startNode] = True
+
+    count = 1
+    
+    while q:
+        node = q.popleft()
+        for e in graph[node]:
+            if not visited[e]:
+                q.append(e)
+                visited[e] = True
+                count += 1
+    return count
+result = []
+max_value = -1
+
+for computer in range(1, n+1):
+    numberOfHacks = bfs(computer)
+    if numberOfHacks > max_value:
+        result = [computer]
+        max_value = numberOfHacks
+    elif numberOfHacks == max_value:
+        result.append(computer)
+        max_value = numberOfHacks
+for e in result:
+    print(e, end=" ")
 ```
