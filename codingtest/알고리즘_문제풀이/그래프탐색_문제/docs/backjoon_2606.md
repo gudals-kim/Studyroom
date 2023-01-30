@@ -70,11 +70,56 @@
 
 #### 문제풀이 핵심 아이디어
 
+- 1번 컴퓨터로 인해 웜 바이러스에 걸린 컴퓨터의 수는 1번 컴퓨터와 연결된 컴퓨터이다.
+  - bfs or dfs로 1번 노드에서 시작되는 그래프 탐색을 하면 된다.
 
-
+- 단순히 시작 정점에서부터 도달할 수 있는 노드의 수를 계산하는 문제
+- 따라서 DFS or BFS를 이용하여 방문하게 되는 노드의 개수를 계산하면 된다.
+  - BFS가 약간 더 빠르다.
+- 컴퓨터의 수가 적음으로, DFS를 이용해 빠르게 문제를 푸는 것이 유리하다.
 
 ### 답안 전체코드
-
+#### 답안 1
 ```py
+from collections import defaultdict,deque
+cnt = int(input())
+graph = defaultdict(set)
+for _ in range(int(input())):
+    a, b = map(int,input().split())
+    graph[a].add(b)
+    graph[b].add(a)
+def bfs(graph, startNode):
+    result = list()
+    visited = deque([startNode])
+    while visited:
+        node = visited.popleft()
+        if node not in result:
+            result.append(node)
+            visited.extend(graph[node])
+    return result
+print(len(bfs(graph, 1))-1)
+```
 
+#### 답안 2 
+```python
+n = int(input())
+m = int(input())
+graph = [[] for _ in range(n+1)]
+visited = [False] * (n+1)
+count = 0
+
+for _ in range(m):
+    x, y = map(int, input().split())
+    graph[x].append(y)
+    graph[y].append(x)
+
+def dfs(startNode):
+    global count
+    count+=1
+    visited[startNode]=True
+    for nextNode in graph[startNode]:
+        if not visited[nextNode]:
+            dfs(nextNode)
+dfs(1)
+print(count-1)
 ```
