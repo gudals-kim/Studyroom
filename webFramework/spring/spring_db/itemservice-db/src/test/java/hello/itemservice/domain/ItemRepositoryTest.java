@@ -30,7 +30,7 @@ class ItemRepositoryTest {
 
     @Autowired
     ItemRepository itemRepository;
-    
+
     void beforeEach(){}
 
     @AfterEach
