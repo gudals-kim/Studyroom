@@ -1,25 +1,24 @@
 import heapq
 
-def dijkstra(그래프,시작노드):
-    가중치들 = {노드 : float('inf') for 노드 in 그래프}
-    가중치들[시작노드] = 0
+
+def dijkstra(그래프, 시작노드):
+    최단거리저장 = {노드: float('inf') for 노드 in 그래프}
+    최단거리저장[시작노드] = 0
 
     최소힙 = []
-    heapq.heappush(최소힙,[가중치들[시작노드],시작노드])
+    heapq.heappush(최소힙, [최단거리저장[시작노드], 시작노드])
 
-    while(최소힙):
-        최소_가중치,힙_노드 = heapq.heappop(최소힙)
-
-        if 가중치들[힙_노드] < 최소_가중치:
+    while 최소힙:
+        현재노드까지의최단거리, 현재노드 = heapq.heappop(최소힙)
+        # 최단거리에 저장된 거리가 더 짧다면 수행 필요없음
+        if 최단거리저장[현재노드] < 현재노드까지의최단거리:
             continue
-
-        for 노드, 가중치 in 그래프[힙_노드].items():
-            가중치 = 최소_가중치 + 가중치
-            if 가중치 < 가중치들[노드]:
-                가중치들[노드] = 가중치
-                heapq.heappush(최소힙, [가중치, 노드])
-
-    return 가중치들
+        for 다음노드, 현재노드와다음노드의거리 in 그래프[현재노드].items():
+            다음노드까지의최단거리 = 현재노드와다음노드의거리 + 현재노드까지의최단거리
+            if 다음노드까지의최단거리 < 최단거리저장[다음노드]:
+                최단거리저장[다음노드] = 다음노드까지의최단거리
+                heapq.heappush(최소힙, [다음노드까지의최단거리, 다음노드])
+    return 최단거리저장
 
 #test code
 graph = {
@@ -32,4 +31,5 @@ graph = {
 }
 
 print(dijkstra(graph,'E').get('A'))
+print(dijkstra(graph,'E'))
 
