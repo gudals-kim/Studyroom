@@ -372,23 +372,27 @@ import heapq
 #start : 시작정점
 #end : 도착정점
 def dijkstra(graph, start, end):
-    
-    distances = {node: float('inf') for node in graph}
-    distances[start] = 0
+    #시작 정점에서 각 정점까지의 거리를 저장할 딕셔너리를 생성하고, 무한대로 초기화
+    distances = {node: [float('inf'), start] for node in graph}
+    #그래프의 시작 정점의 거리는 0으로 초기화
+    distances[start] = [0, start]
+    # 큐 생성
     queue = []
-    heapq.heappush(queue, [distances[start], start])
+    # 그래프의 시작 정점과 시작 정점의 거리(0)을 최소 힙에 넣어준다.
+    heapq.heappush(queue, [distances[start][0], start])
     
     while queue:
+        # 큐에서 정점을 하나씩 꺼내 인접한 정점들의 거리를 모두 확인하여 업데이트한다.
         current_distance, current_node = heapq.heappop(queue)
-        
-        if distances[current_node] < current_distance:
+        # 더 짧은 경로가 있다면 무시한다.
+        if distances[current_node][0] < current_distance:
             continue
             
         for adjacent, weight in graph[current_node].items():
             distance = current_distance + weight
             
-            if distance < distances[adjacent]:
-                distances[adjacent] = distance
+            if distance < distances[adjacent][0]:
+                distances[adjacent] = [distance, current_node]
                 heapq.heappush(queue, [distance, adjacent])
 #start -> end 경로 부분 추가
     path = end
@@ -411,7 +415,7 @@ graph = {
     'F': {'A': 5}
 }
 
-print(dijkstra(graph, 'A'))
+print(dijkstra(graph, 'A', 'F'))
 ```
 ```py
 #출력
