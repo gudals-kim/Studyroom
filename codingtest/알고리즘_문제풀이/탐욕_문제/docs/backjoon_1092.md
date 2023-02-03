@@ -79,7 +79,7 @@
 5
 18 18 15 15 17
 ```
-#### 예제 출력 5
+#### 예제 출력 4
 ```
 2
 ```
@@ -92,14 +92,67 @@
 - 문제 유형
   - 정렬, 그리디 알고리즘
 
+- 모든 박스를 배로 옮기는데 드는 시간의 최솟값을 계산해야한다.
+- 시간 복잡도 O(NM)안에 문제를 해결할 수 있다.
 
 #### 문제풀이 핵심 아이디어
+> **매 분마다, 모든 크레인에 대하여 옮길 수 있는 박스를 선택하여 옮기도록 하자.** <br>
+> **박스를 무게 기준으로 내림차순 정렬 한 뒤에, 무거운 것 부터 옮기자.**
 
+1. 크레인과 박스를 내림차순 정렬한다.
 
+<img src="https://github.com/gudals-kim/Studyroom/blob/delevlop/codingtest/img/backjoon_1092_1.png?raw=true">
+
+2. 매 분마다, 모든 크레인에 대하여 옮길 수 있는 박스를 선택하여 옮긴다.
+   - 0번 인덱스 크레인부터 박스를 선택한다.
+   - 박스를 선택 후 이미 옮긴 박스인지 확인한다.
+   - 박스를 선택 후 0번 인덱스 크레인의 최고 무게보다 작은 박스인지 확인한다.
+   - 박스를 옮긴다.
+   - 1번 인덱스 크레인 및 다음 인덱스 크레인도 반복 한다.
+
+<img src="https://github.com/gudals-kim/Studyroom/blob/delevlop/codingtest/img/backjoon_1092_2.png?raw=true">
+
+3. 박스의 개수 만큼 반복한다.
+
+<img src="https://github.com/gudals-kim/Studyroom/blob/delevlop/codingtest/img/backjoon_1092_3.png?raw=true">
 
 
 ### 답안 전체코드
 
 ```py
+import sys
 
+input = sys.stdin.readline
+n = int(input())
+최고중량 = sorted(list(map(int, input().split())), reverse=True)
+m = int(input())
+박스무게 = sorted(list(map(int, input().split())), reverse=True)
+result = 0
+
+# 모든 박스를 옮길 수 없는 경우
+if 최고중량[0] < 박스무게[0]:
+    result = -1
+else:
+    # 각 크레인이 현재 옮겨야 하는 박스의 번호 (0부터 시작)
+    선택한박스 = [0] * n
+    # 각 박스를 옮겼는지의 여부
+    옮긴박스 = [False] * m
+    count = 0
+
+    while True:
+        #박스를 다 옮겼으면 종료한다.
+        if count == len(박스무게):
+            break
+        #모든 크레인 대하여 각각 처리
+        for 크레인 in range(n):
+            while 선택한박스[크레인] < len(박스무게):
+                #아직 안 옮긴 박스 중에서, 옮길 수 있는 박스를 만날 때 까지 반복
+                if not 옮긴박스[선택한박스[크레인]] and 최고중량[크레인]>=박스무게[선택한박스[크레인]]:
+                    옮긴박스[선택한박스[크레인]]=True
+                    선택한박스[크레인]+=1
+                    count+=1
+                    break
+                선택한박스[크레인] += 1
+        result += 1
+print(result)
 ```
