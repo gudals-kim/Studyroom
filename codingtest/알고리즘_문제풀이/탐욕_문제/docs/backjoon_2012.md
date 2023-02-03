@@ -62,11 +62,22 @@
 
 #### 문제풀이 핵심 아이디어
 
+- 예상된 등수와 실제 등수의 차이를 최소화해야한다.
+  - **그러긴 위해선 예상등수를 오름차순으로 정렬한 뒤**
+  - **가상의 등수(1~n)의 오름차순을 빼준 값의 합이 최솟값이다.**
 
 
 
 ### 답안 전체코드
 
 ```py
-
+import sys
+input = sys.stdin.readline
+n = int(input())
+ranks = sorted([int(input()) for _ in range(n)])
+fakeRanks = range(1,n+1)
+result = 0
+for index in range(0,n):
+    result += abs(fakeRanks[index]-ranks[index])
+print(result)
 ```

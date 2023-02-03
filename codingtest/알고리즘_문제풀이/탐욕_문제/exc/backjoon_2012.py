@@ -12,7 +12,14 @@ for test_case in range(1,T+1):
     startTime = time.time()
     print(f"--------{test_case}번 테스트 코드 답안 출력입니다.--------")
     # ======== 답안지 작성을 합니다 =========
-
+    input = sys.stdin.readline
+    n = int(input())
+    ranks = sorted([int(input()) for _ in range(n)])
+    fakeRanks = range(1,n+1)
+    result = 0
+    for index in range(0,n):
+        result += abs(fakeRanks[index]-ranks[index])
+    print(result)
     # ==================================
     print(f"-----------------------------------------")
     rss = p.memory_info().rss / 2 ** 20  # Bytes to MB
