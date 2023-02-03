@@ -12,6 +12,22 @@ for test_case in range(1,T+1):
     startTime = time.time()
     print(f"--------{test_case}번 테스트 코드 답안 출력입니다.--------")
     # ======== 답안지 작성을 합니다 =========
+    s = input()
+    chkZero=0
+    chkOne=0
+    if s[0]=='1':
+        chkZero+=1
+    else:
+        chkOne+=1
+    for index in range(len(s) - 1):
+        if s[index]!=s[index+1]:
+            if s[index+1]=='1':
+                chkZero+=1
+            else:
+                chkOne+=1
+    print(min(chkOne,chkZero))
+
+
 
     # ==================================
     print(f"-----------------------------------------")
