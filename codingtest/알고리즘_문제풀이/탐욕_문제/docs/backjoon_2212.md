@@ -69,14 +69,58 @@
 - 문제 유형
   - 정렬, 그리디 알고리즘
 
+- 최대 K개의 집중국을 설치해야 한다.
+- 집중국들의 수신 가능 영역의 길이의 합을 최소화 하는것이 목표이다.
+- O(NlogN) 시간 복잡도 이내에 문제를 해결할 수 있다.
 
 #### 문제풀이 핵심 아이디어
+> 정렬된 센서들을 최대 K개의 영역으로 나누는 것과 동일하다.
 
+<img src="https://github.com/gudals-kim/Studyroom/blob/delevlop/codingtest/img/backjoon_2212_1.png?raw=true">
 
+1. K개의 집중국이기 때문에 K개의 영역으로 나누어진다.
 
+<img src="https://github.com/gudals-kim/Studyroom/blob/delevlop/codingtest/img/backjoon_2212_2.png?raw=true">
+
+2. 각 영역의 거리를 적게 하기 위해선 정렬이 필요하다.
+
+<img src="https://github.com/gudals-kim/Studyroom/blob/delevlop/codingtest/img/backjoon_2212_3.png?raw=true">
+
+3. 각 센서 사이의 거리를 계산한다.
+
+<img src="https://github.com/gudals-kim/Studyroom/blob/delevlop/codingtest/img/backjoon_2212_4.png?raw=true">
+
+4. 가장 거리가 먼 순서대로 K-1개의 연결고리를 제거한다.
+>여기서는 3과 6의 사이가 가장 크기 때문에 제거한다.
+
+<img src="https://github.com/gudals-kim/Studyroom/blob/delevlop/codingtest/img/backjoon_2212_5.png?raw=true">
+
+5. 따라서 남아있는 모든 거리의 합은 5이다.
 
 ### 답안 전체코드
 
 ```py
+import sys
+input = sys.stdin.readline
+센서개수 = int(input())
+집중국개수 = int(input())
+센서좌표 = sorted(map(int, input().split()))
+result = 0
+#집중국의 개수가 센서개수 보다 많을때
+if 집중국개수>=센서개수:
+    #모든 센서위치에 집중국을 설치하면 된다.
+    #집중국의 수신 가능영역은 0이다.
+    pass
+else:
+    #각 센서 간의 거리를 계산하여 내림차순 정렬
+    거리 = []
+    for index in range(1, 센서개수):
+        거리.append(센서좌표[index]-센서좌표[index-1])
+    거리.sort(reverse=True)
 
+    #가장 긴 거리부터 하나씩 제거한다.
+    for i in range(집중국개수-1):
+        거리[i] = 0
+    result = sum(거리)
+print(result)
 ```
