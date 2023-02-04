@@ -64,16 +64,61 @@
 <br>
 
 ### 문제풀이 전략
+>데이터의 개수가 최대 200,000개 이므로 O(NlogN)이내의 시간에 해결 해야 한다.
 - 문제 유형
   - 큐, 그리디 알고리즘
 
 
 #### 문제풀이 핵심 아이디어
+> 데드라인을 초과하는 문제는 풀 수 없다.
 
+1. 데이터를 데드라인 기준으로 오름차순 정렬을 한다.
 
+<img src="https://github.com/gudals-kim/Studyroom/blob/delevlop/codingtest/img/backjoon_1781_2.png?raw=true">
+
+2. 각 문제의 '컵라면 수'를 우선순위 큐에 넣으면서, 데드라인을 초과하는 경우는 heapq.pop()을 한다.
+> min heap을 사용하기 때문에 컵라면의 수가 가장 적은것이 나온다.
+
+<img src="https://github.com/gudals-kim/Studyroom/blob/delevlop/codingtest/img/backjoon_1781_3.png?raw=true">
+
+- 첫번째 데이터를 빼서 우선순위 큐에 넣는다.
+  - 데드라인 : 1
+  - 우선순위 큐의 크기-1 (방금 넣은 데이터는 고려하지 않는다.) = 0
+  - 데드라인을 넘지 않는다.
+  - <img src="https://github.com/gudals-kim/Studyroom/blob/delevlop/codingtest/img/backjoon_1781_4.png?raw=true">
+
+- 두번째 데이터를 빼서 우선순위 큐에 넣는다.
+  - 데드라인 : 1
+  - 우선순위 큐의 크기-1 (방금 넣은 데이터는 고려하지 않는다.) = 1
+  - 데드라인을 초과한다.
+  - 우선순위 큐 heapq.pop() 진행
+  - <img src="https://github.com/gudals-kim/Studyroom/blob/delevlop/codingtest/img/backjoon_1781_5.png?raw=true">
+
+- 세번째 데이터를 빼서 우선순위 큐에 넣는다.
+  - 데드라인 : 2
+  - 우선순위 큐의 크기-1 (방금 넣은 데이터는 고려하지 않는다.) = 1
+  - 데드라인을 넘지않는다.
+  - <img src="https://github.com/gudals-kim/Studyroom/blob/delevlop/codingtest/img/backjoon_1781_6.png?raw=true">
+
+> 이런식으로 모든 데이터를 넣고 빼고를 진행한다.
+- 남아있는 **우선순위 큐의 모든 값의 합이 정답**이 된다.
+- <img src="https://github.com/gudals-kim/Studyroom/blob/delevlop/codingtest/img/backjoon_1781_7.png?raw=true">
 
 ### 답안 전체코드
 
 ```py
-
+import heapq, sys
+input = sys.stdin.readline
+#데이터를 데드라인 기준으로 오름차순 정렬을 한다.
+모든문제들 = sorted([tuple(map(int,input().split())) for _ in range(int(input()))])
+풀어서받은컵라면들 = []
+#a모든 문제의 '컵라면 수'를 우선순위 큐에 넣으면서, 데드라인을 초과하는 경우는 heapq.pop()을 한다.
+for 데드라인,컵라면 in 모든문제들:
+    heapq.heappush(풀어서받은컵라면들,컵라면)
+    if len(풀어서받은컵라면들)-1 >= 데드라인:
+        heapq.heappop(풀어서받은컵라면들)
+result = 0
+if len(풀어서받은컵라면들)!=0:
+    result = sum(풀어서받은컵라면들)
+print(result)
 ```
