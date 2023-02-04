@@ -85,14 +85,70 @@
 - 문제 유형
   - 정렬, 그리디 알고리즘
 
+- 일직선상의 각 책들을 원래의 위치에 놓아야 한다.
 
 #### 문제풀이 핵심 아이디어
+- 두 개의 우선순위 큐를 이용해서 문제를 풀 수 있다.
+- 0보다 큰 책들과 0보다 작은 책들을 나눠서 처리한다.
+- 마지막 책을 놓을 때는 다시 0 으로 돌아올 필요가 없으므로, 가장 먼 책을 마지막으로 놓는다.
 
 
+> 예 책의 개수 N = 7, 한번에 들 수 있는 책의 개수 M = 2
+
+1. 왼쪽 책(음수)와 오른쪽 책(양수)에 대하여 개별적으로, M개씩 묶어서 처리한다.
+
+<img src="https://github.com/gudals-kim/Studyroom/blob/delevlop/codingtest/img/backjoon_1461_1.png?raw=true">
+
+2. **M개씩의 묶음 중 가장 거리가 먼 책만큼 이동**해야 한다.
+
+<img src="https://github.com/gudals-kim/Studyroom/blob/delevlop/codingtest/img/backjoon_1461_2.png?raw=true">
 
 
 ### 답안 전체코드
 
 ```py
+import heapq
+import sys
 
+input=sys.stdin.readline
+
+책의개수, 한번에들수있는책의양 = map(int,input().split())
+책좌표들 = list(map(int, input().split()))
+오른쪽책 = []
+왼쪽책 = []
+result = 0
+#가장 거리가 먼 책까지의 거리
+가장먼책거리 = max(max(책좌표들), -min(책좌표들))
+
+# 최대 힙(Max Heap)을 위해 원소를 음수로 구성한다.
+for 책좌표 in 책좌표들:
+    #책의 위치가 오른쪽에 있는 경우
+    if 책좌표>0:
+        #최대 힙을 위해서 음수로 넣는다.
+        heapq.heappush(오른쪽책, -책좌표)
+    #책의 위치가 왼쪽에 있는 경우
+    else:
+        heapq.heappush(왼쪽책, 책좌표)
+
+while 오른쪽책:
+    #한 번에 m 개씩 옮길 수 있으므로 m개씩 뺀다.
+    # 최대 힙이기 때문에 가장 먼저 나오는 책의 거리만을 더한다.
+    result += heapq.heappop(오른쪽책)
+    # 위에서 가장 큰값을 뺏으니 나머지 m-1들을 빼준다.
+    for 횟수 in range(한번에들수있는책의양-1):
+        #오른쪽 좌표가 끝났는데 pop할 수없으니 조건을 걸어준다.
+        if 오른쪽책:
+            heapq.heappop(오른쪽책)
+while 왼쪽책:
+    # 한 번에 m 개씩 옮길 수 있으므로 m개씩 뺀다.
+    # 최대 힙이기 때문에 가장 먼저 나오는 책의 거리만을 더한다.
+    result += heapq.heappop(왼쪽책)
+    # 위에서 가장 큰값을 뺏으니 나머지 m-1들을 빼준다.
+    for 횟수 in range(한번에들수있는책의양-1):
+        #왼쪽 좌표가 끝났는데 pop할 수없으니 조건을 걸어준다.
+        if 왼쪽책:
+            heapq.heappop(왼쪽책)
+# 왕복으로 가기때문에 result값을 두배해준다.
+# 단, 가장 먼 책은 한번만 가기 때문에 가장 큰 책의 좌표를 빼준다.
+print(abs(result)*2-가장먼책거리)
 ```
