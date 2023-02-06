@@ -12,38 +12,37 @@ for test_case in range(1,T+1):
     startTime = time.time()
     print(f"--------{test_case}번 테스트 코드 답안 출력입니다.--------")
     # ======== 답안지 작성을 합니다 =========
-    from collections import defaultdict, deque
-    input = sys.stdin.readline
-    def bfs(graph,startNode):
-        result = set()
-        visited = deque([startNode])
-        while visited:
-            node = visited.popleft()
-            if node not in result:
-                result.add(node)
-                visited.extend(graph[node])
-        return result
+    import sys
+
+    sys.setrecursionlimit(100000)
+
+
+    def dfs(x, y):
+        visited[x][y] = True
+        directions = [(-1, 0), (1, 0), (0, -1), (0, 1)]
+        for dx, dy in directions:
+            nx, ny = x + dx, y + dy
+            if nx < 0 or nx >= n or ny < 0 or ny >= m:
+                continue
+            if array[nx][ny] and not visited[nx][ny]:
+                dfs(nx, ny)
+
 
     for _ in range(int(input())):
         m, n, k = map(int, input().split())
-        graph=list()
-        result = defaultdict(set)
-        for __ in range(k):
-            x, y = map(int,input().split())
-            graph.append((x,y))
-        for ex in graph:
-            x,y = ex
-            for ex2 in [(x,y+1),(x-1,y),(x,y),(x+1,y),(x,y-1)]:
-                if ex2 in graph:
-                    result[ex].add(ex2)
-                    result[ex2].add(ex)
-        array = set(result.keys())
-        cut = 0
-        while array:
-            node = array.pop()
-            array = array - bfs(result,node)
-            cut+=1
-        print(cut)
+        array = [[0] * m for _ in range(n)]
+        visited = [[False] * m for _ in range(n)]
+        for _ in range(k):
+            y, x = map(int, input().split())
+            array[x][y] = 1
+        result = 0
+        for i in range(n):
+            for j in range(m):
+                if array[i][j] and not visited[i][j]:
+                    dfs(i, j)
+                    result += 1
+        print(result)
+
     # ==================================
     print(f"-----------------------------------------")
     rss = p.memory_info().rss / 2 ** 20  # Bytes to MB
