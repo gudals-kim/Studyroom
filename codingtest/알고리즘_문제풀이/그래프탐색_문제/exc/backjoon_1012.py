@@ -12,37 +12,38 @@ for test_case in range(1,T+1):
     startTime = time.time()
     print(f"--------{test_case}번 테스트 코드 답안 출력입니다.--------")
     # ======== 답안지 작성을 합니다 =========
+    from collections import defaultdict, deque
     import sys
+    input = sys.stdin.readline
+    #dfs
+    def dfs(graph, start):
+        result = set()
+        q = deque([start])
+        while q:
+            node = q.popleft()
+            if node not in result:
+                result.add(node)
+                q.extend(graph[node])
+        return result
 
-    sys.setrecursionlimit(100000)
-
-
-    def dfs(x, y):
-        visited[x][y] = True
-        directions = [(-1, 0), (1, 0), (0, -1), (0, 1)]
-        for dx, dy in directions:
-            nx, ny = x + dx, y + dy
-            if nx < 0 or nx >= n or ny < 0 or ny >= m:
-                continue
-            if array[nx][ny] and not visited[nx][ny]:
-                dfs(nx, ny)
-
-
-    for _ in range(int(input())):
+    for t in range(int(input())):
         m, n, k = map(int, input().split())
-        array = [[0] * m for _ in range(n)]
-        visited = [[False] * m for _ in range(n)]
-        for _ in range(k):
-            y, x = map(int, input().split())
-            array[x][y] = 1
+        배추심은곳들 = set(tuple(map(int,input().split())) for _ in range(k))
+        graph = defaultdict(set)
+        for x,y in 배추심은곳들:
+            # 배추가 심어진곳에서 상하좌우로 탐색한다. + 본인 좌표도 추가해야함
+            for 옆좌표 in [(x, y + 1), (x - 1, y), (x, y), (x + 1, y), (x, y - 1)]:
+                # 상하좌우에 배추가 심어져 있다면 그래프를 연결한다.
+                if 옆좌표 in 배추심은곳들:
+                    graph[(x,y)].add(옆좌표)
+                    graph[옆좌표].add((x,y))
+        # 그래프의 모든 key(배추가 심어진 곳)에서 붙어 있는 곳(그래프로 연결된 곳)을 찾아 차집합으로 빼준다.
         result = 0
-        for i in range(n):
-            for j in range(m):
-                if array[i][j] and not visited[i][j]:
-                    dfs(i, j)
-                    result += 1
+        while 배추심은곳들:
+            node = 배추심은곳들.pop()
+            배추심은곳들 = 배추심은곳들 - dfs(graph, node)
+            result+=1
         print(result)
-
     # ==================================
     print(f"-----------------------------------------")
     rss = p.memory_info().rss / 2 ** 20  # Bytes to MB

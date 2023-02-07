@@ -187,45 +187,35 @@
 from collections import defaultdict, deque
 import sys
 input = sys.stdin.readline
-
-#bfs 코드
-def bfs(graph,startNode):
-    result = set() #차집합을 사용하기 때문에 set 자료형으로 반환한다.
-    visited = deque([startNode])
-    while visited:
-        node = visited.popleft()
+#dfs
+def dfs(graph, start):
+    result = set()
+    q = deque([start])
+    while q:
+        node = q.popleft()
         if node not in result:
             result.add(node)
-            visited.extend(graph[node])
+            q.extend(graph[node])
     return result
 
-
-for _ in range(int(input())):
-  #graph 생성 코드
-    m, n, k = map(int, input().split()) 
-    real=list()
+for t in range(int(input())):
+    m, n, k = map(int, input().split())
+    배추심은곳들 = set(tuple(map(int,input().split())) for _ in range(k))
     graph = defaultdict(set)
-    # 배추가 심어진 좌표를 real에 담는다.
-    for __ in range(k):
-        x, y = map(int,input().split())
-        real.append((x,y))
-    for ex in real:
-        x,y = ex
-        #배추가 심어진곳에서 상하좌우로 탐색한다. + 본인 좌표도 추가해야함
-        for ex2 in [(x,y+1),(x-1,y),(x,y),(x+1,y),(x,y-1)]:
-          #상하좌우에 배추가 심어져 있다면 그래프에 추가한다.
-            if ex2 in real:
-                graph[ex].add(ex2)
-                graph[ex2].add(ex)
-    
-    #그래프의 모든 key(배추가 심어진 곳)에서 붙어 있는 곳(그래프로 연결된 곳)을 찾아 차집합으로 빼준다.
-    array = set(graph.keys())
-    count = 0
-    while array:
-        node = array.pop()
-        array = array - bfs(graph,node)
-        count+=1
-    print(count)
+    for x,y in 배추심은곳들:
+        # 배추가 심어진곳에서 상하좌우로 탐색한다. + 본인 좌표도 추가해야함
+        for 옆좌표 in [(x, y + 1), (x - 1, y), (x, y), (x + 1, y), (x, y - 1)]:
+            # 상하좌우에 배추가 심어져 있다면 그래프를 연결한다.
+            if 옆좌표 in 배추심은곳들:
+                graph[(x,y)].add(옆좌표)
+                graph[옆좌표].add((x,y))
+    # 그래프의 모든 key(배추가 심어진 곳)에서 붙어 있는 곳(그래프로 연결된 곳)을 찾아 차집합으로 빼준다.
+    result = 0
+    while 배추심은곳들:
+        node = 배추심은곳들.pop()
+        배추심은곳들 = 배추심은곳들 - dfs(graph, node)
+        result+=1
+    print(result)
 ```
 
 #### 답안2
