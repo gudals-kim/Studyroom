@@ -63,14 +63,56 @@
 
 ### 문제풀이 전략
 - 문제 유형
-  - 탐색
+  - 탐색, dfs, bfs
 
 
 #### 문제풀이 핵심 아이디어
-
-
-
+> 상하좌우 4가지 케이스를 5회 반복하니 4^5 = 1,024 회의 결과에서 최댓값을 구하면 된다.
+- 배열을 합치는 문제이다.
+- 특히 이렇게 배열을 합치는 문제는 상하좌우를 나누어서 생각하지 않는다.
+  - 한 방향의 코드를 짜고 배열 자체를 90도 180도 270도로 돌려서 케이스를 나누는게 더 쉽다.
+- 수행 이후 90도 180도 270도의 3가지 가지를 치면서 bfs로 탐색하면 된다.
+  - 기존 상태(최댓값)와 자식노드의 최댓값이 같다면 가지를 끊어낸다.
 ### 답안 전체코드
 ```python
+from copy import deepcopy
 
+n = int(input())
+data = [list(map(int, input().split())) for _ in range(n)]
+
+#rotate90() 90도 돌리기 함수
+def rotate90(data, n):
+    newData = deepcopy(data)
+    for i in range(n):
+        for j in range(n):
+            newData[j][(n-i-1)] = data[i][j]
+    return newData
+def convert(열, n):
+    #양수만 가져온다.
+    합쳐진열 = [i for i in 열 if i]
+    for i in range(1, len(합쳐진열)):
+        if 합쳐진열[i-1] == 합쳐진열[i]:
+            합쳐진열[i-1] *= 2
+            합쳐진열[i] = 0
+    합쳐진열 = [i for i in 합쳐진열 if i]
+    return 합쳐진열 + [0] * (n-len(합쳐진열))
+def dfs(n, data, count):
+    #result는 현재 data 최댓값
+    result = max([max(i) for i in data])
+    #입력한 count가 0 회가 되면 result를 리턴하고 종료
+    if count == 0:
+        return result
+    #상하좌우 4번을 돌려야한다.
+    for _ in range(4):
+        #data를 연산한다. 한 방향으로 배열 합치기
+        newData = [convert(열, n) for 열 in data]
+        if newData != data:
+            # 이전과 같지 않다면 count를 1내리고 다시 dfs를 돌린다.
+            result = max(result, dfs(n, newData, count-1))
+        #배열을 90도로 돌린다.
+        data = rotate90(data, n)
+    return result
+
+
+print(dfs(n, data, 5))
 ```
