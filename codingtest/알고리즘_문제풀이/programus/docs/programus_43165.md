@@ -1,7 +1,7 @@
 
 # [프로그래머스 43165번 타겟넘버](https://school.programmers.co.kr/learn/courses/30/lessons/43165?language=python3)
 
-## <img src="https://raw.githubusercontent.com/gudals-kim/Studyroom/0c61bf1ad9b6434ff624dbab4012654df8c92b01/codingtest/img/rank/level_2.svg" width="20"> 프로그래머스 43165번 타겟넘버 
+## <img src="https://github.com/gudals-kim/Studyroom/blob/delevlop/codingtest/img/rank/level_2.png?raw=true" width="150"> 프로그래머스 43165번 타겟넘버 
 
 
 | 시간제한 | 메모리제한 | 정답비율 |  난이도   | 
