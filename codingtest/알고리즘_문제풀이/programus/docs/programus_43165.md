@@ -68,15 +68,46 @@
 
 ### 문제풀이 전략
 
-
+- dfs, bfs
 
 #### 문제풀이 핵심 아이디어
+> 다음 인덱스에 해당하는 nubers 원소를 더하거나 빼서 자식 노드로 붙여서 이어간다.
 
+- 예) numbers = [1,1,1,1,1]
+  - 1(index 0)
+    - +1(index 1) => 2
+      - +1(index 2) => 3
+      - -1(index 2) => -1
+    - -1(index 1) => 0 
+  - -1(index 0)
+...
 
-
+- 이런식으로 노드를 탐색해 간다.
 
 ### 답안 전체코드
 
 ```py
+from collections import deque
+n = int(input())
+numbers = list(map(int,input().split()))
+target = int(input())
 
+def solution(numbers, target):
+    answer = 0
+    queue = deque()
+    n = len(numbers)
+    queue.append([numbers[0], 0])
+    queue.append([-1 * numbers[0], 0])
+    while queue:
+        node, idx = queue.popleft()
+        idx += 1
+        if idx < n:
+            queue.append([node + numbers[idx], idx])
+            queue.append([node - numbers[idx], idx])
+        else:
+            if node == target:
+                answer += 1
+    return answer
+
+print(solution(numbers, target))
 ```
