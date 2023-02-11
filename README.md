@@ -21,7 +21,4 @@
 |  등록년월   |      프로젝트 이름      |      구분      |                              프로젝트 링크                              |          description           |
 |:-------:|:-----------------:|:------------:|:-----------------------------------------------------------------:|:------------------------------:|
 | 2022/12 | web_vulnerability |   security   |  [웹 취약점 분석 보기](https://github.com/gudals-kim/web_vulnerability)   | 웹 서버 구축 및 OWASP top 10 시나리오 분석 |
-| 2023/02 |    giflatformV1     |     toy      |                        [giflatformV1 보기]()                        |    혼자 만들어보는 기획, 디자인, 개발 V1     |
-| 2023/03 |    giflatformV2     |     toy      |                        [giflatformV2 보기]()                        |    혼자 만들어보는 기획, 디자인, 개발 V2     |
-| 2023/04 |    giflatformV3     |     toy      |                        [giflatformV3 보기]()                        |    혼자 만들어보는 기획, 디자인, 개발 V3     |
-| 2023/05 |  clone_delivery   | clone coding |                        [배달의민족 클론 코딩 보기]()                         |     기획 및 디자인을 가져와서 개발만 해봄      |
+
