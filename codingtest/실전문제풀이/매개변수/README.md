@@ -1,2 +1,0 @@
-# Studyroom
-my Studyroom
