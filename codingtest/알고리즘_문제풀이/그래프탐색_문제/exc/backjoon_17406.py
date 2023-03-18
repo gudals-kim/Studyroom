@@ -12,6 +12,12 @@ for test_case in range(1,T+1):
     startTime = time.time()
     print(f"--------{test_case}번 테스트 코드 답안 출력입니다.--------")
     # ======== 답안지 작성을 합니다 =========
+    n, m, k = map(int, input().split())
+    data = [list(map(int, input().split()) for _ in range(n))]
+    q = [list(map(int, input().split()) for _ in range(k))]
+
+    def minValue(배열들):
+        return min(sum(배열) for 배열 in 배열들)
 
     # ==================================
     print(f"-----------------------------------------")
