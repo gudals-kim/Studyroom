@@ -15,6 +15,21 @@
 
 ### 1.2 [팩토리 패턴](https://github.com/gudals-kim/Studyroom/blob/delevlop/computer_science/designPattern/docs/factory.md)
 
+- 객체의 생성을 캡슐화 하는 패턴이며, ```팩토리 메서드 패턴```과, ```추상 팩토리 패턴```으로 나누어 진다.
+- 공통점 
+  - 객체의 생성부를 캡슐화 하여 결합을 느슨하게하여 의존성을 낮춘다.
+- 차이점
+  - ```팩토리 메서드 패턴``` 
+    - 상속을 통해 서브 클래스에서 팩토리 메소드를 오버라이딩하여 객체의 생성부를 구현
+  - ```추상 팩토리 패턴```
+    - 객체의 집합을 생성하기 위한 정의를 추상체에 위치시키고 하위의 구현체에서 세부적인 집합 생성 과정을 구현 (Fatory Method를 이용해 구현)
+- 장점
+  - 상위 클래스와 하위 클래스가 분리되기 때문에 느슨한 결합을 가지게 된다.
+  - 또한 상위 클래스에서는 객체 생성 방식을 알 필요가 없기 때문에 유연성이 증가된다.
+  - 객체 생성 로직이 따로 떼어져 있기 때문에 유지보수성이 증가된다.
+- 단점 
+  - 클래스가 많아진다. (클래스 계층도 커질 수 있다.)
+
 ### 1.3 [전략 패턴](https://github.com/gudals-kim/Studyroom/blob/delevlop/computer_science/designPattern/docs/strate.md)
 
 ### 1.4 [옵저버](https://github.com/gudals-kim/Studyroom/blob/delevlop/computer_science/designPattern/docs/observer.md)
