@@ -16,9 +16,10 @@
 
 ## Rink table
 
-| ComputerScience |                                        Record Rink                                        | first upload | last update |
-|:---------------:|:-----------------------------------------------------------------------------------------:|:------------:|:-----------:|
-|    DataBase     |      [DB](https://github.com/gudals-kim/Studyroom/tree/delevlop/computer_science/DB)      |      -       |      -      |
-|       OS        |      [OS](https://github.com/gudals-kim/Studyroom/tree/delevlop/computer_science/OS)      |      -       |      -      |
-|     Network     | [Network](https://github.com/gudals-kim/Studyroom/tree/delevlop/computer_science/network) |  2022/12/02  | 2022/12/02  |
-|      Cloud      |   [Cloud](https://github.com/gudals-kim/Studyroom/tree/delevlop/computer_science/cloud)   |      -       |      -      |
+| ComputerScience |                                              Record Rink                                              | first upload | last update |
+|:---------------:|:-----------------------------------------------------------------------------------------------------:|:------------:|:-----------:|
+|    DataBase     |            [DB](https://github.com/gudals-kim/Studyroom/tree/delevlop/computer_science/DB)            |      -       |      -      |
+|       OS        |            [OS](https://github.com/gudals-kim/Studyroom/tree/delevlop/computer_science/OS)            |      -       |      -      |
+|     Network     |       [Network](https://github.com/gudals-kim/Studyroom/tree/delevlop/computer_science/network)       |  2022/12/02  | 2023/01/02  |
+|      Cloud      |         [Cloud](https://github.com/gudals-kim/Studyroom/tree/delevlop/computer_science/cloud)         |      -       |      -      |
+|  DesignPattern  | [DesignPattern](https://github.com/gudals-kim/Studyroom/tree/delevlop/computer_science/designPattern) |  2023/03/21  | 2023/03/21  |
