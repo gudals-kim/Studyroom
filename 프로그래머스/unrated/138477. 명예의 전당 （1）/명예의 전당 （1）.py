@@ -6,7 +6,5 @@ def solution(k, score):
         heappush(q,score[idx])
         if len(q)>k:
             heappop(q)
-        node = heappop(q)
-        answer.append(node)
-        heappush(q,node)
+        answer.append(q[0])
     return answer
