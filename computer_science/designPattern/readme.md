@@ -31,5 +31,8 @@
   - 클래스가 많아진다. (클래스 계층도 커질 수 있다.)
 
 ### 1.3 [전략 패턴](https://github.com/gudals-kim/Studyroom/blob/delevlop/computer_science/designPattern/docs/strate.md)
+> 동일한 문제를 해결하는 여러 알고리즘 중에서 필요에 따라 적합한 알고리즘을 선택하여 사용할 수 있도록 하는 패턴입니다.
+- 장점: 알고리즘을 자유롭게 바꿀 수 있고, 새로운 알고리즘을 쉽게 추가할 수 있습니다.
+- 단점: 코드가 길어지거나 복잡해질 수 있고, 알고리즘 간에 통신 비용이 발생할 수 있습니다.
 
 ### 1.4 [옵저버](https://github.com/gudals-kim/Studyroom/blob/delevlop/computer_science/designPattern/docs/observer.md)
