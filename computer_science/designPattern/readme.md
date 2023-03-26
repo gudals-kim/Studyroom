@@ -71,4 +71,14 @@
 - 단점
   - 단순한 순회를 구현하는 경우 클래스만 많아져 복잡도가 증가할 수 있다.
 ### 1.7 [노출모듈](https://github.com/gudals-kim/Studyroom/blob/delevlop/computer_science/designPattern/docs/revealingModule.md)
+> 노출 모듈 패턴은 즉시 실행 함수를 통해 private, public 같은 접근 제어자를 만드는 패턴입니다.
+
+- 장점
+  - 개발자에게 깔끔한 접근 방법을 제공
+  - private 데이터 제공
+  - 함수와 변수를 지역화 가능
+  - 명시적으로 public 메소드와 변수를 제공해 명시성을 높임
+- 단점
+  - private 메소드에 대해 함수 확장시 어려움 발생
+  - private 메소드를 참조하는 public 메소드 수정이 어려움
 ### 1.8 [MVC/MVP/MVVM](https://github.com/gudals-kim/Studyroom/blob/delevlop/computer_science/designPattern/docs/mvc.md)
