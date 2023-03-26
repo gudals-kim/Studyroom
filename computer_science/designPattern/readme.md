@@ -47,7 +47,19 @@
   - 너무 많이 사용하게 되면 상태 관리가 힘들 수 있다.
   - 데이터 배분에 문제가 생기면 자칫 큰 문제로 이어질 수 있습니다.
 
-### 1.5 [프록시]()
-### 1.6 [이터레이터]()
-### 1.7 [노출모듈]()
-### 1.8 [MVC/MVP/MVVM]()
+### 1.5 [프록시](https://github.com/gudals-kim/Studyroom/blob/delevlop/computer_science/designPattern/docs/proxy.md)
+> 대상 객체에 접근하기 전 그 접근에 대한 흐름을 가로채 대상 객체 앞단의 인터페이스 역할을 하는 디자인 패턴
+- 장점
+  - 사이즈가 큰 객체가 로딩되기 전에도 프록시를 통해 참조를 할 수 있다.
+  - 실제 객체의 public, protected 메소드를 숨기고 인터페이스를 통해 노출시킬 수 있다.
+  - 로컬에 있지 않고 떨어져있는 객체를 사용할 수 있다.
+- 단점
+  - 객체를 생성할 때 한 단계를 거치게 되므로, 빈번한 객체 생성이 필요한 경우 성능이 저하될 수 있다.
+  - 프록시 내부에서 객체 생성을 위해 스레드가 생성, 동기화가 구현되어야 하는 경우 성능이 저하될 수 있다.
+  - 로직이 난해해져 가독성이 떨어질 수 있다.
+>```캐싱```<br>
+> 캐시 안에 정보를 담아두고, 캐시 안에 있는 정보를 요구하는 요청에 대해 
+> 다시 저 멀리 있는 원격 서버에 요청하지 않고 캐시 안에 있는 데이터를 활용하는 것을 말한다.
+### 1.6 [이터레이터](https://github.com/gudals-kim/Studyroom/blob/delevlop/computer_science/designPattern/docs/iterator.md)
+### 1.7 [노출모듈](https://github.com/gudals-kim/Studyroom/blob/delevlop/computer_science/designPattern/docs/revealingModule.md)
+### 1.8 [MVC/MVP/MVVM](https://github.com/gudals-kim/Studyroom/blob/delevlop/computer_science/designPattern/docs/mvc.md)
