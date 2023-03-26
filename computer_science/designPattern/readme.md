@@ -61,5 +61,14 @@
 > 캐시 안에 정보를 담아두고, 캐시 안에 있는 정보를 요구하는 요청에 대해 
 > 다시 저 멀리 있는 원격 서버에 요청하지 않고 캐시 안에 있는 데이터를 활용하는 것을 말한다.
 ### 1.6 [이터레이터](https://github.com/gudals-kim/Studyroom/blob/delevlop/computer_science/designPattern/docs/iterator.md)
+>이터레이터 패턴은 컬렉션의 구현 방법을 노출시키지 않고 그 안에 존재하는 모든 항목에 접근할 수 있도록 하는 패턴입니다. <br>
+>이터레이터 패턴을 사용하면 컬렉션 내에 구현이 어떤지 몰라도 해당 객체에 접근해 반복 작업을 처리할 수 있습니다.
+
+- 장점
+  - 집합체 클래스의 응집도를 높여준다.
+  - 집합체 내에서 어떤 식으로 일이 처리되는지 알 필요 없이, 집합체 안에 들어있는 모든 항목에 접근 할 수 있게 해준다.
+  - 모든 항목에 일일이 접근하는 작업을 컬렉션 객체가 아닌 이터레이터 객체에서 맡게 된다.
+- 단점
+  - 단순한 순회를 구현하는 경우 클래스만 많아져 복잡도가 증가할 수 있다.
 ### 1.7 [노출모듈](https://github.com/gudals-kim/Studyroom/blob/delevlop/computer_science/designPattern/docs/revealingModule.md)
 ### 1.8 [MVC/MVP/MVVM](https://github.com/gudals-kim/Studyroom/blob/delevlop/computer_science/designPattern/docs/mvc.md)
