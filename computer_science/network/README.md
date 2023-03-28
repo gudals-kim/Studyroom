@@ -212,7 +212,7 @@ ping은 ICMP프로토콜을 통해 동작하며, 이 때문에 ICMP프로토콜�
 - IEEE 또는 IETF라는 표준화 단체가 이를 정한다.
 
 ## TCP/IP 4계층 모델 & OSI 7계층
-> [자세히]()
+> [자세히](https://github.com/gudals-kim/Studyroom/blob/delevlop/computer_science/network/docs/tcpip_layer4.md)
 
 <img src="https://user-images.githubusercontent.com/79966015/176059897-52d5ece0-fad1-432b-90d3-db8980322c6a.PNG">
 
