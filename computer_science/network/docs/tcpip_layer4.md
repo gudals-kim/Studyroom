@@ -1,5 +1,4 @@
 # TCP/IP 4계층 모델 & OSI 7계층
-> [자세히]()
 
 <img src="https://user-images.githubusercontent.com/79966015/176059897-52d5ece0-fad1-432b-90d3-db8980322c6a.PNG">
 
