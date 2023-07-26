@@ -7,11 +7,11 @@ public class Main{
         StringBuilder sb = new StringBuilder();
         StringTokenizer st = new StringTokenizer(br.readLine());
         int N = Integer.parseInt(st.nextToken());
-        HashMap<Long, ArrayList<Integer>> map = new HashMap<>();
+        HashMap<Integer, ArrayList<Integer>> map = new HashMap<>();
         int[] ans = new int[N];
         st = new StringTokenizer(br.readLine());
         for (int n=0; n<N; n++){
-            Long num = Long.parseLong(st.nextToken());
+            Integer num = Integer.parseInt(st.nextToken());
             if (map.containsKey(num)){
                 map.get(num).add(n);
                 continue;
@@ -21,7 +21,7 @@ public class Main{
             map.put(num,list);
         }
 
-        Long[] sortKeys = map.keySet().toArray(new Long[map.keySet().size()]);
+        Integer[] sortKeys = map.keySet().toArray(new Integer[map.keySet().size()]);
         Arrays.sort(sortKeys);
 
         for (int idx = 0; idx < sortKeys.length; idx++) {
