@@ -46,20 +46,20 @@ public class Main{
             int ansIdx = mArr[idxM][1]; //정답 배열의 인덱스는 mArr의 정렬전 인덱스
             //두 배열이 값이 같을때
             if (nArr[idxN]==mArr[idxM][0]){
-                ans[ansIdx] = 1;//정답 인덱스를 증가 =1로 초기화 해도 무관함.
+                ans[ansIdx] = 1;//정답 인덱스를 1로 초기화
                 idxN++;//n 배열 다음 인덱스로
                 idxM++;//m 배열 다음 인덱스로
                 continue;
             }
             //nArr보다 mArr가 클때
             if (nArr[idxN]<mArr[idxM][0]){
-                ans[ansIdx] = 0; //안해도 되지만 가독성을 위해 적음
+
                 idxM++;//m 배열만 다음 인덱스로
                 continue;
             }
             //mArr보다 nArr가 클때
             if (nArr[idxN]>mArr[idxM][0]){
-                ans[ansIdx] = 0; //안해도 되지만 가독성을 위해 적음
+                
                 idxN++;//n 배열만 다음 인덱스로
                 if (idxM==M-1){//단, M배열의 인덱스가 마지막 인덱스라면 탈출한다.
                     break;
