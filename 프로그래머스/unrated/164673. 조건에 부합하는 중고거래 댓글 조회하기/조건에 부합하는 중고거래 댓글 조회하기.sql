@@ -1,5 +1,13 @@
 -- 코드를 입력하세요
-SELECT item.TITLE, item.BOARD_ID, review.REPLY_ID, review.WRITER_ID, review.CONTENTS, DATE_format(review.CREATED_DATE,'%Y-%m-%d') as CREATED_DATE
-from USED_GOODS_BOARD item join USED_GOODS_REPLY review on item.BOARD_ID = review.BOARD_ID
-where year(item.CREATED_DATE)=2022 and month(item.CREATED_DATE)=10
-order by review.CREATED_DATE, item.TITLE
+# SELECT TITLE, BOARD_ID, REPLY_ID, WRITER_ID, CONTENTS, CREATED_DATE
+select board.TITLE,
+reply.BOARD_ID,
+reply.REPLY_ID,
+reply.WRITER_ID,
+reply.CONTENTS,
+date_format(reply.CREATED_DATE,"%Y-%m-%d") as CREATED_DATE
+from USED_GOODS_BOARD board 
+join USED_GOODS_REPLY reply
+on board.BOARD_ID=reply.BOARD_ID
+where year(board.CREATED_DATE)=2022 and month(board.CREATED_DATE)=10
+order by CREATED_DATE, board.TITLE
