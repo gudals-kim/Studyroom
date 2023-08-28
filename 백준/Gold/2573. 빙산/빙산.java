@@ -26,22 +26,23 @@ public class Main {
             }
         }
         //입력 받기 끝
-        int year = 0;
-        boolean isDiv = false;
+
+        int year = 0; // 몇년이 지났는지 체크
+        boolean isDiv = false; // 빙산이 나눠졌는지 체크
         while (ices.size()!=0){
-            //빙산의 덩어리가 나눠졌다면
-            if (chk(ices)){
-                isDiv = true;
-                break;
+            if (chk(ices)){//빙산의 덩어리가 나눠졌다면
+                isDiv = true;// 나눠졌다 체크하고 
+                break; // 탈출
             }
-            //빙산이 녹은 후
-            ices = yearLater(ices);
-            year++;
+
+            year++;// 년도를 증가시킨 후
+            ices = yearLater(ices); //빙산이 녹은 후 맵 업데이트 및 빙산 업데이트
         }
-        if (isDiv){
-            System.out.println(year);
+        
+        if (isDiv){//빙산이 나눠졌다면
+            System.out.println(year); // 연도 출력
         }else {
-            System.out.println(0);
+            System.out.println(0); // 빙산이 나눠지지 않았다면 0 출력
         }
 
 
@@ -54,12 +55,14 @@ public class Main {
             if (visited[ice.x][ice.y]) continue;
             visited = bfs(ice, visited);
             n++;
+            if (n>1){//bfs 가 한번 이상 돌았다면 빙산이 나눠진것임
+                return true;
+            }
         }
-        if (n>1){
-            return true;
-        }
+        //bfs 가 한번만 돌았다면 빙산이 나눠지지 않은것임
         return false;
     }
+    //빙산 좌표를 넣으면 연결된 빙산을 탐색하는 bfs 메소드
     static boolean[][] bfs(Ice startNode, boolean[][] visited){
         ArrayDeque<Ice> q = new ArrayDeque<>();
         q.add(startNode);
@@ -119,15 +122,6 @@ class Ice{
     int x;
     int y;
     int height;
-
-    @Override
-    public String toString() {
-        return "Ice{" +
-                "x=" + x +
-                ", y=" + y +
-                ", height=" + height +
-                '}';
-    }
 
     public Ice(int x, int y, int height) {
         this.x = x;
