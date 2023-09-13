@@ -22,9 +22,8 @@ public class Main {
 		int result = 0; //동전 개수 최솟값
 		//가치가 큰 순서대로 동전 사용하기
 		for (int i = N-1; i >= 0; i--) {
-            result += K/a[i];
-			if(result>0) {
-				//동전 개수 카운트
+			if(K/a[i]>0) {
+				result += K/a[i]; //동전 개수 카운트
 				K = K%a[i]; //남은 K값
 			}
 		}
