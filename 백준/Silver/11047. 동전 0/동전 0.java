@@ -1,24 +1,34 @@
 import java.util.*;
 import java.io.*;
 
+//동전 0
 public class Main {
-    public static void main(String[] args) throws IOException {
 
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringTokenizer st = new StringTokenizer(br.readLine());
+	public static void main(String[] args) throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st;
+		StringBuilder sb = new StringBuilder();
+		
+		st = new StringTokenizer(br.readLine());
+		int N = Integer.parseInt(st.nextToken()); //동전 종류
+		int K = Integer.parseInt(st.nextToken()); //동전 합
+		
+		//동전 가치
+		int[] a = new int[N];
+		for (int i = 0; i < N; i++) {
+			a[i] = Integer.parseInt(br.readLine());
+		}
+		
+		int result = 0; //동전 개수 최솟값
+		//가치가 큰 순서대로 동전 사용하기
+		for (int i = N-1; i >= 0; i--) {
+            result += K/a[i];
+			if(result>0) {
+				//동전 개수 카운트
+				K = K%a[i]; //남은 K값
+			}
+		}
+		System.out.println(result);
+	}
 
-        int N = Integer.parseInt(st.nextToken());
-        int K = Integer.parseInt(st.nextToken());
-        int ans = 0;
-        int[] getCost = new int[N];
-
-        for (int n = 0; n < N; n++) {
-            getCost[n] = Integer.parseInt(br.readLine());
-        }
-        for (int i = N-1; i > -1; i--) {
-            ans += K/getCost[i];
-            K = K%getCost[i];
-        }
-        System.out.println(ans);
-    }
 }
