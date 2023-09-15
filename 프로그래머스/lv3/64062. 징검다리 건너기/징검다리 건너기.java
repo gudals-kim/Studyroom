@@ -1,8 +1,8 @@
 import java.io.*;
 import java.util.*;
 public class Solution {
-public static int solution(int[] stones, int k) {
-        Deque<Integer> deque = new ArrayDeque<>();
+    public static int solution(int[] stones, int k) {
+        Deque<Integer> deque = new LinkedList<>();
         int n = stones.length;
         int[] maxValues = new int[n - k + 1];
         int result = Integer.MAX_VALUE;
@@ -19,17 +19,13 @@ public static int solution(int[] stones, int k) {
             }
 
             // 현재 원소를 큐에 추가
-            deque.addLast(i);
+            deque.offerLast(i);
 
             // 현재 연속 집합의 크기가 k에 도달하면 최댓값 저장
             if (i >= k - 1) {
-                maxValues[i - k + 1] = stones[deque.peekFirst()];
+                // 최솟값 계산
+                result = Math.min(result,stones[deque.peekFirst()]);
             }
-        }
-
-        // 최솟값 계산
-        for (int max : maxValues) {
-            result = Math.min(result, max);
         }
 
         return result;
