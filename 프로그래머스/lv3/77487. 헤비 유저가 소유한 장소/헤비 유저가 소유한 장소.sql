@@ -3,8 +3,8 @@ SELECT ID, NAME, HOST_ID
 from PLACES
 where host_id in (
     select host_id
-    from PLACES
+    from places
     group by host_id
-    having count(id)>1
-)
-order by id
+    having count(*)>1
+    )
+order by ID
