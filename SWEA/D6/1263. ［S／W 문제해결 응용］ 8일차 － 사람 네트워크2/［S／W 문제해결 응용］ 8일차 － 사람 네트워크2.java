@@ -1,68 +1,73 @@
-import java.io.*;
-import java.util.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Arrays;
+import java.util.StringTokenizer;
 
 public class Solution {
 
-    static int ans;
-    static ArrayList[] graph;
-    public static void main(String[] args) throws Exception {
+	public static void main(String[] args) throws IOException {
 
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringBuilder sb = new StringBuilder();
-        StringTokenizer st;
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        int T = Integer.parseInt(br.readLine());
-        for (int t = 1; t <= T; t++) {
-            sb.append("#").append(t).append(" ");
+		int T = Integer.parseInt(br.readLine());
 
-            st = new StringTokenizer(br.readLine());
-            int N = Integer.parseInt(st.nextToken());
-            graph = new ArrayList[N];
-            for (int i = 0; i < N; i++) {
-                graph[i] = new ArrayList<Integer>();
-                for (int j = 0; j < N; j++) {
-                    if (Integer.parseInt(st.nextToken())==1)graph[i].add(j);
-                }
-            }
-            ans = Integer.MAX_VALUE;
-            for (int i = 0; i < N; i++) {
-                ans = Math.min(ans,getDist(i,N));
-            }
+		StringBuilder sb = new StringBuilder();
 
-            sb.append(ans).append("\n");
-        }
-        System.out.println(sb);
-    }
-    static int getDist(int startNode, int N){
-        int result = 0;
-        boolean[] visit = new boolean[N];
-        ArrayDeque<Node> q = new ArrayDeque<>();
-        q.add(new Node(startNode,0));
-        while (!q.isEmpty()){
+		for (int test_case = 1; test_case <= T; test_case++) {
 
-            Node node = q.poll();
-            if (visit[node.index])continue;
-            visit[node.index] = true;
-            result += node.depth;
+			StringTokenizer st = new StringTokenizer(br.readLine());
 
-            ArrayList<Integer> nextNodes = graph[node.index];
-            for (Integer nextNode : nextNodes) {
-                if (visit[nextNode]) continue;
-                q.add(new Node(nextNode,node.depth+1));
-            }
+			int N = Integer.parseInt(st.nextToken());
 
-        }
-        return result;
-    }
 
-}
-class Node{
-    int index;
-    int depth;
+			int[][] dist = new int[N][N];
+			for (int i = 0; i < N; i++) {
+				Arrays.fill(dist[i], Integer.MAX_VALUE);
+			}
 
-    public Node(int index, int depth) {
-        this.index = index;
-        this.depth = depth;
-    }
+			for (int i = 0; i < N; i++) {
+				for (int j = 0; j < N; j++) {
+					if(i==j){
+						dist[i][j] = 0;
+					}
+
+					int num = Integer.parseInt(st.nextToken());
+
+					if (num == 1) {
+						dist[i][j] = 1;
+					}
+				}
+			}
+
+			// 플로이드 워셜 실행
+			for (int m = 0; m < N; m++) {
+				for (int s = 0; s < N; s++) {
+					for (int e = 0; e < N; e++) {
+						if (dist[s][m] != Integer.MAX_VALUE && dist[m][e] != Integer.MAX_VALUE) {
+							dist[s][e] = Math.min(dist[s][e], dist[s][m] + dist[m][e]);
+						}
+					}
+				}
+			}
+
+			int min = Integer.MAX_VALUE;
+			for (int i = 0; i < N; i++) {
+
+				int sum = 0;
+
+				for (int j = 0; j < N; j++) {
+					sum += dist[i][j];
+				}
+
+				min = Math.min(min, sum);
+
+			}
+
+			sb.append("#").append(test_case).append(" ").append(min).append("\n");
+
+		}
+		System.out.println(sb);
+	}
 }
 
