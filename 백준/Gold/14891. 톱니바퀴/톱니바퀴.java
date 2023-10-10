@@ -1,113 +1,62 @@
-
 import java.io.*;
 import java.util.*;
 
 public class Main {
-    static HashMap<Integer, ArrayDeque<Integer>> getWheel;
-    static boolean[] visited;
-    public static void main(String[] args) throws IOException{
+    static int ans, K;
+    static int[][] mags = new int[4][8];
+    public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringBuilder sb = new StringBuilder();
         StringTokenizer st;
 
-        getWheel = new HashMap<>();
-        for (int i = 1; i <= 4; i++) {
-            String line = br.readLine();
-            getWheel.put(i,new ArrayDeque<>());
+        for (int i = 0; i < 4; i++) {
+            String input = br.readLine();
             for (int j = 0; j < 8; j++) {
-                getWheel.get(i).add(Integer.parseInt(String.valueOf(line.charAt(j))));
+                mags[i][j]=input.charAt(j)-'0';
             }
         }
+        ans = 0;
+        K = Integer.parseInt(br.readLine());
+        for (int i = 0; i < K; i++) {
+            st= new StringTokenizer(br.readLine());
+            int num = Integer.parseInt(st.nextToken()) - 1;
+            int comb = Integer.parseInt(st.nextToken());
+            process("start", num, comb);
+        }
+        ans = mags[0][0]*1 + mags[1][0]*2 + mags[2][0]*4 + mags[3][0]*8;
+        System.out.println(ans);
+    }
+    private static void process(String preComb, int num, int comb) {
+        boolean rightRun = preComb.equals("right") && num+1<4 && mags[num][2]!=mags[num+1][6];
+        boolean leftRun = preComb.equals("left") && num-1>=0 && mags[num-1][2]!=mags[num][6];
+        if (preComb.equals("start")){
+            rightRun = num+1<4 && mags[num][2]!=mags[num+1][6];
+            leftRun = num-1>=0 && mags[num-1][2]!=mags[num][6];
+        }
 
-
-        int K = Integer.parseInt(br.readLine());
-
-        for (int k = 0; k < K; k++) {
-            st = new StringTokenizer(br.readLine());
-            int num = Integer.parseInt(st.nextToken());
-            int way = Integer.parseInt(st.nextToken());
-
-            int left = num-1;
-            int leftWay = way;
-            ArrayList<int[]> temp = new ArrayList<>();
-            while (left>0){
-                if (chkRotateLeft(getWheelArr(getWheel.get(left+1)),getWheelArr(getWheel.get(left)))){
-                    leftWay *= (-1);
-                    temp.add(new int[]{left,leftWay});
-                    left--;
-                    continue;
-                }
-                break;
+        //현재 톱니바퀴를 돌려주자.
+        if (comb==1){
+            //comb = 1 시계로 돌리기
+            int[] temp = new int[8];
+            for (int i = 0; i < 8; i++) {
+                int idx = i+1;
+                if (idx==8) idx=0;
+                temp[idx] = mags[num][i];
             }
-            int right = num+1;
-            int rightWay = way;
-            while (right<5){
-                if (chkRotateRight(getWheelArr(getWheel.get(right-1)),getWheelArr(getWheel.get(right)))){
-                    rightWay *= (-1);
-                    temp.add(new int[]{right,rightWay});
-                    right++;
-                    continue;
-                }
-                break;
+            mags[num] = temp;
+        } else if (comb==-1) {
+            //comb = -1 반시계로 돌리기
+            int[] temp = new int[8];
+            for (int i = 0; i < 8; i++) {
+                int idx = i-1;
+                if (idx==-1) idx=7;
+                temp[idx] = mags[num][i];
             }
-            rotateWheel(num,way);//해당 톰니바퀴 움직인다
-            for (int[] ints : temp) {
-                rotateWheel(ints[0],ints[1]);
-            }
-        }
-        System.out.println(getScore());
-    }
-
-    static int getScore(){
-        int result = 0;
-        if (getWheel.get(1).getFirst()==1){
-            result+=1;
-        }
-        if (getWheel.get(2).getFirst()==1){
-            result+=2;
-        }
-        if (getWheel.get(3).getFirst()==1){
-            result+=4;
-        }
-        if (getWheel.get(4).getFirst()==1){
-            result+=8;
-        }
-        return result;
-    }
-    static void rotateWheel(int num, int way){
-        ArrayDeque<Integer> wheel = getWheel.get(num);
-        if (way==-1){//반시계
-            wheel.addLast(wheel.pollFirst());
-        }
-        if (way==1){//시계
-            wheel.addFirst(wheel.pollLast());
+            mags[num] = temp;
         }
 
-
-    }
-    static int[] getWheelArr(ArrayDeque<Integer> wheel){
-        int[] wheelArr = new int[wheel.size()];
-        int idx = 0;
-        for (Integer i : wheel) {
-            wheelArr[idx++] = i;
-        }
-        return wheelArr;
-    }
-
-    //true 반환이면 움직임
-    //false면 움직이지 않음
-    static boolean chkRotateRight(int[] wheel, int[] rightWheel){
-        if (wheel[2]==rightWheel[6]){
-            return false;
-        }
-        return true;
-    }
-    //true 반환이면 움직임
-    //false면 움직이지 않음
-    static boolean chkRotateLeft(int[] wheel, int[] leftWheel){
-        if (leftWheel[2]==wheel[6]){
-            return false;
-        }
-        return true;
+        if (rightRun)process("right", num+1, comb*(-1));//오른쪽 돌리기
+        if (leftRun)process("left", num-1, comb*(-1));//왼쪽 돌리기
     }
 }
+
