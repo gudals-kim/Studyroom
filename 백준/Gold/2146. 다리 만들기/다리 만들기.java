@@ -1,4 +1,5 @@
 
+
 import java.io.*;
 import java.util.*;
 
@@ -33,17 +34,45 @@ public class Main{
 		
 		ans = 999999;
 		ArrayList<ArrayList<Node>> lands = findLands(landNodes, visit);
-		getMinDist(lands);
+//		getMinDist(lands);
+		for (ArrayList<Node> arrayList : lands) {
+			for (Node node : arrayList) {
+				ans = Math.min(ans, bfs(node, new boolean[N][N])-1);
+			}
+		}
+		
+		
 		System.out.println(ans);
 		
 		
 	}
 	//다리길이 찾기 bfs 사용
-//	static void bfs(Node node) {
-//		
-//		
-//		
-//	}
+	static int bfs(Node startNode, boolean[][] visit) {
+		int result = 999999;
+		ArrayDeque<Node> q = new ArrayDeque<>();
+		q.add(startNode);
+		while(!q.isEmpty()) {
+			
+			Node node = q.poll();
+			if (map[node.x][node.y]!=0&&map[node.x][node.y]!=startNode.landIndex) {
+				result = node.depth;
+				break;
+			}
+			if (visit[node.x][node.y]) continue;
+			visit[node.x][node.y] = true;
+			
+			
+			for (int[] mv : move) {
+				int dx = mv[0]+ node.x;
+				int dy = mv[1]+ node.y;
+				
+				if (!isIn(dx,dy)||visit[dx][dy]||map[dx][dy]==startNode.landIndex) continue;
+				q.add(new Node(node.landIndex,dx,dy,node.depth+1));
+			}
+		}
+		return result;
+	}
+	
 	//다리길이 찾기 멘헤튼 거리 사용
 	static void getMinDist(ArrayList<ArrayList<Node>> lands) {
 		int landsCount = lands.size();
@@ -60,7 +89,7 @@ public class Main{
 				
 				for (Node nodeA : landA) {
 					for (Node nodeB : landB) {
-						ans = Math.min(ans, getDist(nodeA,nodeB)-1);
+						ans = Math.min(ans, getDist(nodeA,nodeB)-1);//다른 섬과의 거리 중 가장 짧은 거리만 저장
 					}
 				}
 				
@@ -108,16 +137,25 @@ class Node{
 	int landIndex;
 	int x;
 	int y;
+	int depth;
 	public Node(int x, int y) {
 		super();
 		this.x = x;
 		this.y = y;
 	}
-	public Node(int landIndex,int x, int y) {
+	public Node(int landIndex, int x, int y) {
 		super();
 		this.landIndex = landIndex;
 		this.x = x;
 		this.y = y;
+		this.depth = 0;
+	}
+	public Node(int landIndex,int x, int y, int depth) {
+		super();
+		this.landIndex = landIndex;
+		this.x = x;
+		this.y = y;
+		this.depth = depth;
 	}
 	@Override
 	public String toString() {
