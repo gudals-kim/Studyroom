@@ -58,23 +58,18 @@ public class Main {
         //크루스칼 알고리즘 사용하기 위해 간선리스트 정렬
         Collections.sort(egs,(o1, o2) -> Integer.compare(o1.cost, o2.cost));
         int temp = 0;
+        int bridgeCount = 0;
         for (Eg eg : egs) {//크루스칼
             if (union(parents, eg.left, eg.right))continue;
             temp += eg.cost;
+            bridgeCount++;
         }
-        for (Eg eg : egs) {//모두 연결되어 있는지 판단을 위해 유니온 한번 더 해야함
-            union(parents, eg.left, eg.right);
-        }
-        HashSet<Integer> set = new HashSet<>();
-        for (int parent : parents) {
-            set.add(parent);
-        }
-        if (set.size()==1){
+
+        if (bridgeCount == islandNum - 1){
             ans = temp;
         }
-//        System.out.println(Arrays.toString(parents));
+
         System.out.println(ans);
-        
     }
     static int find(int[] parents, int i){
         if (parents[i]==i) return i;
