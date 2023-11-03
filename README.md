@@ -17,8 +17,4 @@
 |     CodingTest      |       [코딩테스트 링크](https://github.com/gudals-kim/Studyroom/tree/delevlop/codingtest)        |             알고리즘 개념 및 문제풀이 정리              |
 |  Computer Science   |      [CS 링크](https://github.com/gudals-kim/Studyroom/tree/delevlop/computer_science)      |               기본적인 컴퓨터 개념 정리               |
 
-## Project List
-|  등록년월   |      프로젝트 이름      |      구분      |                              프로젝트 링크                              |          description           |
-|:-------:|:-----------------:|:------------:|:-----------------------------------------------------------------:|:------------------------------:|
-| 2022/12 | web_vulnerability |   security   |  [웹 취약점 분석 보기](https://github.com/gudals-kim/web_vulnerability)   | 웹 서버 구축 및 OWASP top 10 시나리오 분석 |
 
