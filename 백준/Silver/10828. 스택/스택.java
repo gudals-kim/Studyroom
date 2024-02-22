@@ -1,53 +1,24 @@
 import java.io.*;
 import java.util.*;
 
-public class Main{
-    public static void main(String[] args) throws IOException{
+public class Main {
+    public static void main(String[] args) throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringBuilder sb = new StringBuilder();
+        StringTokenizer st;
 
-        int R = Integer.parseInt(new StringTokenizer(br.readLine()).nextToken());
-        Stack<Integer> stack = new Stack<>();
-
-        for (int r=0; r<R; r++){
-            StringTokenizer st = new StringTokenizer(br.readLine());
-            String comd = st.nextToken();
-
-            if (comd.equals("push")){
-                stack.push(Integer.parseInt(st.nextToken()));
-                continue;
-            }
-            if (comd.equals("top")){
-                if (stack.empty()){
-                    sb.append(-1).append("\n");
-                    continue;
-                }
-                sb.append(stack.peek()).append("\n");
-                continue;
-            }
-            if (comd.equals("empty")){
-                if (stack.empty()){
-                    sb.append(1).append("\n");
-                    continue;
-                }
-                sb.append(0).append("\n");
-                continue;
-            }
-            if (comd.equals("pop")){
-                if (stack.empty()){
-                    sb.append(-1).append("\n");
-                    continue;
-                }
-                sb.append(stack.pop()).append("\n");
-                continue;
-            }
-            if (comd.equals("size")){
-                sb.append(stack.size()).append("\n");
-                continue;
-            }
-
+        int N = Integer.parseInt(br.readLine());
+        ArrayDeque<Integer> stack = new ArrayDeque<>();
+        for (int i = 0; i < N; i++) {
+            st = new StringTokenizer(br.readLine());
+            String comb = st.nextToken();
+            if (comb.equals("push"))stack.addFirst(Integer.parseInt(st.nextToken()));
+            else if (comb.equals("pop"))sb.append(stack.isEmpty() ? -1 : stack.pollFirst()).append("\n");
+            else if (comb.equals("size"))sb.append(stack.size()).append("\n");
+            else if (comb.equals("empty"))sb.append(stack.isEmpty() ? 1 : 0).append("\n");
+            else if (comb.equals("top"))sb.append(stack.isEmpty() ? -1 : stack.peekFirst()).append("\n");
         }
-        System.out.print(sb.toString());
-
+        System.out.println(sb);
     }
+
 }
