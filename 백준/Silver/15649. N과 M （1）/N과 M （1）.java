@@ -1,40 +1,36 @@
-
 import java.io.*;
 import java.util.*;
 
 public class Main {
-    static StringBuilder sb = new StringBuilder();
-    public static void main(String[] args) throws IOException {
+    static int N, M;
+    public static void main(String[] args) throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringTokenizer st = new StringTokenizer(br.readLine());
-        int N = Integer.parseInt(st.nextToken());
-        int M = Integer.parseInt(st.nextToken());
-        int[] arr = new int[N];
-        int[] output = new int[M];
-        boolean[] visited = new boolean[N];
-        for (int i = 0; i < N; i++) {
-            arr[i] = i+1;
-        }
-        perm(arr,output,visited,0,arr.length,M);
-        System.out.println(sb.toString());
-    }
+        StringBuilder sb = new StringBuilder();
+        StringTokenizer st;
 
-    static void perm(int[] arr, int[] output, boolean[] visited, int depth, int n, int r){
-        if (depth == r){
-            for (int i : output) {
+        st = new StringTokenizer(br.readLine());
+        N = Integer.parseInt(st.nextToken());
+        M = Integer.parseInt(st.nextToken());
+
+
+        perm(new int[M], 0, new boolean[N+1], sb);
+        System.out.println(sb);
+
+    }
+    static void perm(int[] arr, int cnt, boolean[] visit, StringBuilder sb){
+        if (cnt==M){
+            for (int i : arr) {
                 sb.append(i).append(" ");
             }
             sb.append("\n");
             return;
         }
-        for (int i = 0; i < n; i++) {
-            if (!visited[i]){
-                visited[i] = true;
-                output[depth] = arr[i];
-                perm(arr, output, visited, depth+1, n, r);
-                visited[i] = false;
-            }
+        for (int i = 1; i <= N; i++) {
+            if (visit[i]) continue;
+            visit[i] = true;
+            arr[cnt] = i;
+            perm(arr, cnt+1, visit, sb);
+            visit[i] = false;
         }
-
     }
 }
